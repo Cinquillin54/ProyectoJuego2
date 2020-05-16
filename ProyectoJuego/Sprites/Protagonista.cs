@@ -174,18 +174,18 @@ namespace ProyectoJuego
             {
                 hitbox.X = 0;
             }
-            else if (hitbox.X > 1050)
+            else if (hitbox.X > 1135)
             {
-                hitbox.X = 1050;
+                hitbox.X = 1135;
             }
 
             if (hitbox.Y < 0)
             {
                 hitbox.Y = 0;
             }
-            else if (hitbox.Y > 500)
+            else if (hitbox.Y > 865)
             {
-                hitbox.Y = 500;
+                hitbox.Y = 865;
             }
         }
         public void SetVida(int vida)

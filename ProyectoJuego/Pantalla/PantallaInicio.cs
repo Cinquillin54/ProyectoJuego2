@@ -35,6 +35,7 @@ namespace ProyectoJuego
         {
             music = media.ElementAt(0);
             MediaPlayer.IsRepeating = true;
+            StreamWriter writer = null;
 
             try
             {
@@ -46,16 +47,23 @@ namespace ProyectoJuego
             }
             catch (FileNotFoundException)
             {
-                StreamWriter writer = File.CreateText("Errores.txt");
+                writer = File.CreateText("Errores.txt");
 
                 writer.WriteLine("Error en " + GetType() + " no se encontró el archivo");
             }
             catch (IOException)
             {
-                StreamWriter writer = File.CreateText("Errores.txt");
+                writer = File.CreateText("Errores.txt");
 
                 writer.WriteLine("Error en " + GetType() + " no se encontró el archivo");
-            }      
+            }
+            finally
+            {
+                if (writer != null)
+                {
+                    writer.Close();
+                }
+            }
         }
 
         public override void Update()
@@ -89,6 +97,10 @@ namespace ProyectoJuego
                 if (seleccionActual == 2)
                 {
                     PantallaSalir.anteriorTecla = 0;
+                }
+                else if (seleccionActual == 1)
+                {
+                    PantallaPuntuaciones.anteriorTecla = 0;
                 }
 
                 PantallaManager.actualPantalla = seleccionActual;
