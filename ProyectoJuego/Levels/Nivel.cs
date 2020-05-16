@@ -130,7 +130,7 @@ namespace ProyectoJuego
                 {
                     Resetear();
                     MediaPlayer.Stop();
-                    PantallaManager.actualPantalla = 2;
+                    PantallaManager.actualPantalla = 3;
                 }
             }
         }

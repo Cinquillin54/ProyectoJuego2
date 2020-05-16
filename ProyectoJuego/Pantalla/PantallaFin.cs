@@ -26,6 +26,7 @@ namespace ProyectoJuego
         public override void LoadContent(GraphicsDevice graphicsDevice,List<Song> media)
         {
             music = media.ElementAt(1);
+            MediaPlayer.IsRepeating = false;
 
             try
             {
@@ -55,7 +56,7 @@ namespace ProyectoJuego
 
             if (key.IsKeyDown(Keys.Escape) || key.IsKeyDown(Keys.Space))
             {
-                PantallaManager.actualPantalla = 1;
+                PantallaManager.actualPantalla = 4;
             }
         }
     }
