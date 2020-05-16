@@ -13,7 +13,7 @@ namespace ProyectoJuego
 {
     class PantallaFin : Pantalla
     {
-        const string TEXTURAS_PATH = "Content/PantallaFinal.png";
+        const string TEXTURAS_PATH = "Content/PantallaFinal.jpg";
 
         public PantallaFin()
         {
@@ -45,13 +45,15 @@ namespace ProyectoJuego
         public override void Draw(SpriteBatch spriteBatch,SpriteFont font)
         {
             base.Draw(spriteBatch,font);
+
+            spriteBatch.DrawString(font,"GAME OVER",new Vector2(400,475),Color.White);
         }       
 
         public override void Update()
         {
             KeyboardState key = Keyboard.GetState();
 
-            if (key.IsKeyDown(Keys.Enter))
+            if (key.IsKeyDown(Keys.Escape) || key.IsKeyDown(Keys.Space))
             {
                 PantallaManager.actualPantalla = 1;
             }

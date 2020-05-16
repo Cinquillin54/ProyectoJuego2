@@ -20,6 +20,8 @@ namespace ProyectoJuego
         protected List<Sprite> muros;
         protected Sprite protagonista;
         protected Sprite enemigo;
+        protected bool pausa;
+        protected int pausaTemp;
         public Nivel()
         {
             muros = new List<Sprite>();
@@ -39,6 +41,8 @@ namespace ProyectoJuego
 
         public override void Initialize(GraphicsDevice graphicsDevice)
         {
+            pausaTemp = 0;
+
             try
             {
                 Stream stream = TitleContainer.OpenStream(TEXTURA_MURO_PATH);
@@ -62,51 +66,72 @@ namespace ProyectoJuego
         public override void LoadContent(GraphicsDevice graphicsDevice,List<Song> media)
         {
             music = media.ElementAt(2);
+            MediaPlayer.IsRepeating = true;
+
             protagonista.LoadContent(graphicsDevice);
             enemigo.LoadContent(graphicsDevice);
         }
         
         protected void UnloadContent()
         {
-
         }
 
         public override void Update()
         {
-            if (!ComprobarDerrota())
+            KeyboardState key = Keyboard.GetState();
+
+            if (key.IsKeyDown(Keys.P) && pausa && pausaTemp > 7)
             {
-                ((Enemigo)enemigo).Perseguir(protagonista);
-                protagonista.Update();
-
-                if (enemigo.DetectarColision(protagonista))
-                {
-                    protagonista.SetX(20);
-                    protagonista.SetY(180);
-                    enemigo.SetX(20);
-                    enemigo.SetY(0);
-
-                    ((Protagonista)protagonista).QuitarVida();
-                }
-
-                foreach (Muro muro in muros)
-                {
-                    if (protagonista.DetectarColision(muro))
-                    {
-                        protagonista.SetX(protagonista.GetUltimaCoordenadaX());
-                        protagonista.SetY(protagonista.GetUltimaCoordenadaY());
-                    }
-
-                    if (enemigo.DetectarColision(muro))
-                    {
-                        ((Enemigo)enemigo).CambiarDirección(muro);
-                    }
-                }
+                pausa = false;
+                pausaTemp = 0;
+            }
+            else if (key.IsKeyDown(Keys.P) && pausaTemp > 7)
+            {
+                pausa = true;
+                pausaTemp = 0;
             }
             else
             {
-                Resetear();
-                MediaPlayer.Stop();
-                PantallaManager.actualPantalla = 2;
+                pausaTemp++;
+            }
+
+            if (!pausa)
+            {
+                if (!ComprobarDerrota())
+                {
+                    ((Enemigo)enemigo).Perseguir(protagonista);
+                    protagonista.Update();
+
+                    if (enemigo.DetectarColision(protagonista))
+                    {
+                        protagonista.SetX(20);
+                        protagonista.SetY(180);
+                        enemigo.SetX(20);
+                        enemigo.SetY(0);
+
+                        ((Protagonista)protagonista).QuitarVida();
+                    }
+
+                    foreach (Muro muro in muros)
+                    {
+                        if (protagonista.DetectarColision(muro))
+                        {
+                            protagonista.SetX(protagonista.GetUltimaCoordenadaX());
+                            protagonista.SetY(protagonista.GetUltimaCoordenadaY());
+                        }
+
+                        if (enemigo.DetectarColision(muro))
+                        {
+                            ((Enemigo)enemigo).CambiarDirección(muro);
+                        }
+                    }
+                }
+                else
+                {
+                    Resetear();
+                    MediaPlayer.Stop();
+                    PantallaManager.actualPantalla = 2;
+                }
             }
         }
 
@@ -114,7 +139,7 @@ namespace ProyectoJuego
 
         public override void Draw(SpriteBatch spriteBatch,SpriteFont font)
         {
-            base.Draw(spriteBatch,font);
+            base.Draw(spriteBatch, font);
 
             foreach (Muro muro in muros)
             {
@@ -123,6 +148,11 @@ namespace ProyectoJuego
 
             protagonista.Draw(spriteBatch);
             enemigo.Draw(spriteBatch);
+
+            if (pausa)
+            {
+                spriteBatch.DrawString(font,"PAUSE",new Vector2(480,400),Color.White);
+            }
         }
     }
 }

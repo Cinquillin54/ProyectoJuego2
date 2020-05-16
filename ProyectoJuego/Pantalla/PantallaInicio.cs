@@ -16,7 +16,7 @@ namespace ProyectoJuego
         public int anteriorTecla;
         public static int seleccionActual;
         const string TEXTURAS_PATH = "Content/PantallaInicio.jpg";
-        const string CURSOR_PATH = "Content/cursor.jpg";
+        const string CURSOR_PATH = "Content/cursor.png";
         Texture2D cursor;
 
         public PantallaInicio(Texture2D background) : base(background)
@@ -104,15 +104,15 @@ namespace ProyectoJuego
 
             if (seleccionActual == 0)
             {
-                vector = new Vector2(550, 100);
+                vector = new Vector2(650, 70);
             }
             else if (seleccionActual == 1)
             {
-                vector = new Vector2(450, 400);
+                vector = new Vector2(800, 370);
             }
             else if (seleccionActual == 2)
             {
-                vector = new Vector2(570, 700);
+                vector = new Vector2(630, 670);
             }
 
             spriteBatch.Draw(cursor, vector, Color.White);
