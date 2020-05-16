@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/musicaInicio.mp3</SourceFile>
+  <SourceTime>2020-05-15T20:09:48.6567648+02:00</SourceTime>
+  <DestFile>D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/bin/Windows/musicaInicio.xnb</DestFile>
+  <DestTime>2020-05-15T20:16:46.628394+02:00</DestTime>
+  <Importer>Mp3Importer</Importer>
+  <ImporterTime>2018-12-08T17:35:54+01:00</ImporterTime>
+  <Processor>SongProcessor</Processor>
+  <ProcessorTime>2018-12-08T17:35:54+01:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput>
+    <string>D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/bin/Windows/musicaInicio.wma</string>
+  </BuildOutput>
+</PipelineBuildEvent>

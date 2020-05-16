@@ -1,0 +1,3 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/musicaMuerte.mp3","D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/bin/Windows/musicaMuerte.xnb","SongProcessor","SongContent",266586,130,0,3080568
+"D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/musicaNivel.mp3","D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/bin/Windows/musicaNivel.xnb","SongProcessor","SongContent",7406164,129,2,173728
