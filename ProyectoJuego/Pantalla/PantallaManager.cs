@@ -60,10 +60,6 @@ namespace ProyectoJuego
             }
         }
 
-        public void RecargarNiveles(GraphicsDevice graphicDevice)
-        {
-            pantallas[1] = new Nivel1();
-        }
         public int GetActualPantalla()
         {
             return actualPantalla;

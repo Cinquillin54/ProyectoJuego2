@@ -12,6 +12,10 @@ namespace ProyectoJuego
 {
     class Protagonista : Sprite
     {
+        Texture2D vidaActual;
+        const string TEXTURA_VIDA_LLENA = "Content/vidaPersonaje_llena.png";
+        const string TEXTURA_VIDA_MEDIA = "Content/vidaPersonaje_media.png";
+        const string TEXTURA_VIDA_BAJA = "Content/vidaPersonaje_baja.png";
         int vida;
 
         public Protagonista(int x,int y,int ancho,int alto) : base(x,y,ancho,alto)
@@ -74,7 +78,17 @@ namespace ProyectoJuego
                 stream = TitleContainer.OpenStream("Content/Personaje/IZQUIERDA_4.png");
                 texturas.Add("izquierda4", Texture2D.FromStream(graphicsDevice, stream));
 
+                stream = TitleContainer.OpenStream(TEXTURA_VIDA_LLENA);
+                texturas.Add("vida_llena", Texture2D.FromStream(graphicsDevice,stream));
+
+                stream = TitleContainer.OpenStream(TEXTURA_VIDA_MEDIA);
+                texturas.Add("vida_media", Texture2D.FromStream(graphicsDevice, stream));
+
+                stream = TitleContainer.OpenStream(TEXTURA_VIDA_BAJA);
+                texturas.Add("vida_baja", Texture2D.FromStream(graphicsDevice, stream));
+
                 texturaActual = texturas["abajo1"];
+                vidaActual = texturas["vida_llena"];
             }
             catch (FileNotFoundException)
             {
@@ -89,11 +103,37 @@ namespace ProyectoJuego
         public void QuitarVida()
         {
             vida -= 25;
+
+            if (vida == 100)
+            {
+                vidaActual = texturas["vida_llena"];
+            }
+            else if (vida < 100 && vida >= 50)
+            {
+                vidaActual = texturas["vida_media"];
+            }
+            else if (vida < 50 && vida > 0)
+            {
+                vidaActual = texturas["vida_baja"];
+            }
         }
 
         public void Curar()
         {
-            vida += 15;
+            vida += 25;
+
+            if (vida == 100)
+            {
+                vidaActual = texturas["vida_llena"];
+            }
+            else if (vida < 100 && vida >= 50)
+            {
+                vidaActual = texturas["vida_media"];
+            }
+            else if (vida < 50 && vida > 0)
+            {
+                vidaActual = texturas["vida_baja"];
+            }
         }
 
         public override void Animar(int direccion)
@@ -136,6 +176,11 @@ namespace ProyectoJuego
                 frame = 1;
                 texturaActual = texturas[direccionLetras + frame];
             }
+        }
+
+        public Texture2D GetTexturaVida()
+        {
+            return vidaActual;
         }
 
         public override void Update()

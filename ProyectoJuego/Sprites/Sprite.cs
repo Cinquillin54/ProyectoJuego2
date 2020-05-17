@@ -41,7 +41,7 @@ namespace ProyectoJuego
 
         public abstract void Animar(int direccion);
 
-        public bool DetectarColision(Sprite sprite2)
+        public virtual bool DetectarColision(Sprite sprite2)
         {
             if (hitbox.Intersects(sprite2.hitbox))
             {
@@ -91,7 +91,7 @@ namespace ProyectoJuego
 
         public abstract void Update();
 
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texturaActual, hitbox, Color.White);
         }

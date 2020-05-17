@@ -10,8 +10,10 @@
     <File>D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/musicaNivel.mp3</File>
     <File>D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/PantallaFinal.png</File>
     <File>D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/PantallaInicio.jpg</File>
+    <File>D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/Pared.jpg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

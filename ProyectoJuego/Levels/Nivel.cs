@@ -7,7 +7,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.IO;
-using ProyectoJuego.Level;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Media;
 
@@ -20,11 +19,13 @@ namespace ProyectoJuego
         protected List<Sprite> muros;
         protected Sprite protagonista;
         protected Sprite enemigo;
+        protected List<Sprite> objetos;
         protected bool pausa;
         protected int pausaTemp;
         public Nivel()
         {
             muros = new List<Sprite>();
+            objetos = new List<Sprite>();
         }
 
         public bool ComprobarDerrota()
@@ -58,9 +59,15 @@ namespace ProyectoJuego
             }
         }
 
-        public void Resetear()
+        public virtual void Resetear()
         {
-            ((Protagonista)protagonista).SetVida(100);
+            ((Protagonista)protagonista).SetVida(75);
+            ((Protagonista)protagonista).Curar();
+
+            for (int i = 0; i < objetos.Count(); i++)
+            {
+                ((Objeto)objetos.ElementAt(i)).Ocultar(0);    
+            }
         }
 
         public override void LoadContent(GraphicsDevice graphicsDevice,List<Song> media)
@@ -68,8 +75,20 @@ namespace ProyectoJuego
             music = media.ElementAt(2);
             MediaPlayer.IsRepeating = true;
 
+            CrearEscenario();
+
             protagonista.LoadContent(graphicsDevice);
             enemigo.LoadContent(graphicsDevice);
+
+            foreach (Muro muro in muros)
+            {
+                muro.LoadContent(graphicsDevice);
+            }
+
+            foreach (Objeto objeto in objetos)
+            {
+                objeto.LoadContent(graphicsDevice);
+            }
         }
         
         protected void UnloadContent()
@@ -125,6 +144,17 @@ namespace ProyectoJuego
                             ((Enemigo)enemigo).CambiarDirección(muro);
                         }
                     }
+
+                    for (int i=0; i<objetos.Count(); i++)
+                    {
+                        if (!((Objeto)objetos.ElementAt(i)).GetOculto())
+                        {
+                            if (objetos.ElementAt(i).DetectarColision(protagonista))
+                            {
+                                ((Objeto)objetos.ElementAt(i)).Ocultar(1);
+                            }
+                        }
+                    }
                 }
                 else
                 {
@@ -141,13 +171,24 @@ namespace ProyectoJuego
         {
             base.Draw(spriteBatch, font);
 
-            foreach (Muro muro in muros)
-            {
-                spriteBatch.Draw(texturaMuro, muro.GetHitbox(), Color.White);
-            }
-
             protagonista.Draw(spriteBatch);
             enemigo.Draw(spriteBatch);
+
+            foreach (Muro muro in muros)
+            {
+                muro.Draw(spriteBatch);
+            }
+
+            for (int i = 0; i < objetos.Count(); i++)
+            {
+                if (!((Objeto)objetos.ElementAt(i)).GetOculto())
+                {
+                    objetos.ElementAt(i).Draw(spriteBatch);
+                }
+            }
+            
+            spriteBatch.DrawString(font,"Vida:", new Vector2(800, 10), Color.White);
+            spriteBatch.Draw(((Protagonista)protagonista).GetTexturaVida(),new Vector2(950,20),Color.White);
 
             if (pausa)
             {

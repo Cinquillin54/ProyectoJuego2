@@ -26,14 +26,14 @@ namespace ProyectoJuego
         }
         public override void CrearEscenario()
         {
-            muros.Add(new Level.Muro(200, 0, 50, 200));
-            muros.Add(new Level.Muro(400, 300, 50, 200));
+            muros.Add(new Muro(0,0,20,400));
+            muros.Add(new Muro(0, 600,30, 600));
+            muros.Add(new Muro(600, 0, 600, 600));
+            objetos.Add(new Curacion(60, 700, 40, 40));
         }
         public override void LoadContent(GraphicsDevice graphicsDevice,List<Song> media)
         {
             base.LoadContent(graphicsDevice,media);
-
-            CrearEscenario();
 
             if (background == null)
             {

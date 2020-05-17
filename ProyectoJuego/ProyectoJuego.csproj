@@ -52,10 +52,10 @@
     <Compile Include="Pantalla\Pantalla.cs" />
     <Compile Include="Pantalla\PantallaFin.cs" />
     <Compile Include="Pantalla\PantallaInicio.cs" />
-    <Compile Include="Sprites\Curacion.cs" />
-    <Compile Include="Sprites\Llave.cs" />
-    <Compile Include="Sprites\Objeto.cs" />
-    <Compile Include="Sprites\Puerta.cs" />
+    <Compile Include="Objetos\Curacion.cs" />
+    <Compile Include="Objetos\Llave.cs" />
+    <Compile Include="Objetos\Objeto.cs" />
+    <Compile Include="Objetos\Puerta.cs" />
     <Compile Include="Sprites\Sprite.cs" />
     <Compile Include="Main\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

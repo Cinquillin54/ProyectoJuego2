@@ -8,7 +8,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.IO;
 using System.Diagnostics.Contracts;
-using ProyectoJuego.Level;
 
 namespace ProyectoJuego
 {
@@ -87,7 +86,6 @@ namespace ProyectoJuego
             {
                 Console.WriteLine("Error");
             }
-            
         }
         public override void Animar(int direccion)
         {

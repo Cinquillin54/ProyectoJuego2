@@ -8,11 +8,11 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProyectoJuego.Level
+namespace ProyectoJuego
 {
     public class Muro : Sprite
     {
-        const string TEXTURAS_PATH = "Content/Pared.png";
+        const string TEXTURAS_PATH = "Content/Pared.jpg";
 
         public Muro(int x, int y, int ancho, int alto) : base(x,y,ancho,alto)
         {
@@ -29,11 +29,17 @@ namespace ProyectoJuego.Level
                 }
                 catch (FileNotFoundException)
                 {
-                    Console.WriteLine("File not found");
+                    StreamWriter writer = File.CreateText("Errores.txt");
+
+                    writer.WriteLine("Error en " + GetType() + " no se encontró el archivo");
+                    writer.Close();
                 }
                 catch (IOException)
                 {
-                    Console.WriteLine("Error");
+                    StreamWriter writer = File.CreateText("Errores.txt");
+
+                    writer.WriteLine("Error");
+                    writer.Close();
                 }
             }
         }
@@ -42,6 +48,10 @@ namespace ProyectoJuego.Level
         }
         public override void Animar(int direccion)
         {
+        }
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(texturaActual,hitbox,Color.White);
         }
     }
 }
