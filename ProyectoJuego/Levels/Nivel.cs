@@ -15,6 +15,8 @@ namespace ProyectoJuego
     public abstract class Nivel : Pantalla
     {
         const string TEXTURA_MURO_PATH = "Content/pared.jpg";
+        protected int[] spawnProtagonista;
+        protected int[] spawnEnemigo;
         protected Texture2D texturaMuro;
         protected List<Sprite> muros;
         protected Sprite protagonista;
@@ -24,6 +26,9 @@ namespace ProyectoJuego
         protected int pausaTemp;
         public Nivel()
         {
+            spawnProtagonista = new int[2];
+            spawnEnemigo = new int[2];
+
             muros = new List<Sprite>();
             objetos = new List<Sprite>();
         }
@@ -61,12 +66,13 @@ namespace ProyectoJuego
 
         public virtual void Resetear()
         {
+            ((Protagonista)protagonista).ResetearInventario();
             ((Protagonista)protagonista).SetVida(75);
             ((Protagonista)protagonista).Curar();
 
-            for (int i = 0; i < objetos.Count(); i++)
+            foreach (Objeto objeto in objetos)
             {
-                ((Objeto)objetos.ElementAt(i)).Ocultar(0);    
+                objeto.Ocultar(0);    
             }
         }
 
@@ -123,10 +129,10 @@ namespace ProyectoJuego
 
                     if (enemigo.DetectarColision(protagonista))
                     {
-                        protagonista.SetX(20);
-                        protagonista.SetY(180);
-                        enemigo.SetX(20);
-                        enemigo.SetY(0);
+                        protagonista.SetX(spawnProtagonista[0]);
+                        protagonista.SetY(spawnProtagonista[1]);
+                        enemigo.SetX(spawnEnemigo[0]);
+                        enemigo.SetY(spawnEnemigo[1]);
 
                         ((Protagonista)protagonista).QuitarVida();
                     }
@@ -145,13 +151,13 @@ namespace ProyectoJuego
                         }
                     }
 
-                    for (int i=0; i<objetos.Count(); i++)
+                    foreach (Objeto objeto in objetos)
                     {
-                        if (!((Objeto)objetos.ElementAt(i)).GetOculto())
+                        if (!objeto.GetOculto())
                         {
-                            if (objetos.ElementAt(i).DetectarColision(protagonista))
+                            if (objeto.DetectarColision(protagonista))
                             {
-                                ((Objeto)objetos.ElementAt(i)).Ocultar(1);
+                                objeto.Ocultar(1);
                             }
                         }
                     }

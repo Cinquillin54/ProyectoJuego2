@@ -1,0 +1,4 @@
+No se pudo encontrar el archivo 'D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\Enemigo\Puerta_abierta.png'.
+No se pudo encontrar el archivo 'D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\Enemigo\Puerta_abierta.png'.
+No se pudo encontrar el archivo 'D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\Enemigo\Puerta_cerrada.png'.
+No se pudo encontrar el archivo 'D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\Enemigo\Puerta_cerrada.png'.

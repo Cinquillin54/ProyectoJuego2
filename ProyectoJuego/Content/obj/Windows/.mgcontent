@@ -11,8 +11,12 @@
     <File>D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/PantallaFinal.png</File>
     <File>D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/PantallaInicio.jpg</File>
     <File>D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/Pared.jpg</File>
+    <File>D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/Puerta_abierta.png</File>
+    <File>D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/Puerta_cerrada.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

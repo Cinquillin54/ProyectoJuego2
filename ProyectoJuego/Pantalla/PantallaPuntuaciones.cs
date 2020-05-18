@@ -86,7 +86,7 @@ namespace ProyectoJuego
             if (key.IsKeyDown(Keys.Enter) && anteriorTecla > 6)
             {
                 PantallaManager.actualPantalla = 4;
-                PantallaInicio.anteriorTecla = 0;
+                PantallaInicio.teclaTimer = 0;
                 anteriorTecla = 0;
             }
             else

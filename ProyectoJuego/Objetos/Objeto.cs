@@ -37,6 +37,19 @@ namespace ProyectoJuego
         }
         public abstract void Funcion(Sprite protagonista);
 
+        public override bool DetectarColision(Sprite sprite2)
+        {
+            if (hitbox.Intersects(sprite2.GetHitbox()))
+            {
+                Funcion(sprite2);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public override void LoadContent(GraphicsDevice graphicsDevice)
         {
         }

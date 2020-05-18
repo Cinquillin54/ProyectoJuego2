@@ -13,7 +13,7 @@ namespace ProyectoJuego
 {
     class PantallaInicio : Pantalla
     {
-        public static int anteriorTecla;
+        public static int teclaTimer;
         public static int seleccionActual;
         const string TEXTURAS_PATH = "Content/PantallaInicio.jpg";
         const string CURSOR_PATH = "Content/cursor.png";
@@ -21,7 +21,7 @@ namespace ProyectoJuego
 
         public PantallaInicio(Texture2D background) : base(background)
         {
-            anteriorTecla = 0;
+            teclaTimer = 0;
             seleccionActual = 0;
         }
         public PantallaInicio() : base()
@@ -47,13 +47,13 @@ namespace ProyectoJuego
             }
             catch (FileNotFoundException)
             {
-                writer = File.CreateText("Errores.txt");
+                writer = File.AppendText("Errores.txt");
 
                 writer.WriteLine("Error en " + GetType() + " no se encontró el archivo");
             }
             catch (IOException)
             {
-                writer = File.CreateText("Errores.txt");
+                writer = File.AppendText("Errores.txt");
 
                 writer.WriteLine("Error en " + GetType() + " no se encontró el archivo");
             }
@@ -70,7 +70,7 @@ namespace ProyectoJuego
         {
             KeyboardState key = Keyboard.GetState();
 
-            if (key.IsKeyDown(Keys.W) && anteriorTecla > 6)
+            if (key.IsKeyDown(Keys.W) && teclaTimer > 6)
             {
                 seleccionActual--;
 
@@ -79,9 +79,9 @@ namespace ProyectoJuego
                     seleccionActual = 0;
                 }
 
-                anteriorTecla = 0;
+                teclaTimer = 0;
             }
-            else if (key.IsKeyDown(Keys.S) && anteriorTecla > 6)
+            else if (key.IsKeyDown(Keys.S) && teclaTimer > 6)
             {
                 seleccionActual++;
 
@@ -90,9 +90,9 @@ namespace ProyectoJuego
                     seleccionActual = 2;
                 }
 
-                anteriorTecla = 0;
+                teclaTimer = 0;
             }
-            else if (key.IsKeyDown(Keys.Enter) && anteriorTecla > 6)
+            else if (key.IsKeyDown(Keys.Enter) && teclaTimer > 6)
             {
                 if (seleccionActual == 2)
                 {
@@ -107,7 +107,7 @@ namespace ProyectoJuego
             }
             else
             {
-                anteriorTecla++;
+                teclaTimer++;
             }
         }
 

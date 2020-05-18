@@ -7,11 +7,14 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.IO;
+using ProyectoJuego;
 
 namespace ProyectoJuego
 {
     class Protagonista : Sprite
     {
+        public List<Objeto> inventario;
+        int objetoActual;
         Texture2D vidaActual;
         const string TEXTURA_VIDA_LLENA = "Content/vidaPersonaje_llena.png";
         const string TEXTURA_VIDA_MEDIA = "Content/vidaPersonaje_media.png";
@@ -20,6 +23,8 @@ namespace ProyectoJuego
 
         public Protagonista(int x,int y,int ancho,int alto) : base(x,y,ancho,alto)
         {
+            inventario = new List<Objeto>();
+            objetoActual = 0;
             vida = 100;
             velocidad = 4;
         }
@@ -183,6 +188,21 @@ namespace ProyectoJuego
             return vidaActual;
         }
 
+        public int Llaves()
+        {
+            int cont = 0;
+
+            foreach (Objeto objeto in inventario)
+            {
+                if (objeto.GetType().Name.Contains("Llave"))
+                {
+                    cont++;
+                }
+            }
+
+            return cont;
+        }
+
         public override void Update()
         {
             ultimaCoordenadaX = hitbox.X;
@@ -240,6 +260,11 @@ namespace ProyectoJuego
         public int GetVida()
         {
             return vida;
+        }
+
+        public void ResetearInventario()
+        {
+            inventario.Clear();
         }
     }
 }

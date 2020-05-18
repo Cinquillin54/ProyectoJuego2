@@ -22,7 +22,14 @@ namespace ProyectoJuego
 
         public override void Funcion(Sprite protagonista)
         {
-            ((Protagonista)protagonista).Curar();
+            if (((Protagonista)protagonista).GetVida() == 100)
+            {
+                
+            }
+            else
+            {
+                ((Protagonista)protagonista).Curar();
+            }
         }
 
         public override void LoadContent(GraphicsDevice graphicsDevice)
@@ -43,19 +50,6 @@ namespace ProyectoJuego
             catch (IOException)
             {
                 Console.WriteLine("Error");
-            }
-        }
-
-        public override bool DetectarColision(Sprite sprite2)
-        {
-            if (hitbox.Intersects(sprite2.GetHitbox()))
-            {
-                Funcion(sprite2);
-                return true;
-            }
-            else
-            {
-                return false;
             }
         }
 
