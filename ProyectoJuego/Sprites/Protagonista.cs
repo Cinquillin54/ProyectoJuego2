@@ -14,7 +14,7 @@ namespace ProyectoJuego
     class Protagonista : Sprite
     {
         public List<Objeto> inventario;
-        int objetoActual;
+        public static int puntuacion;
         Texture2D vidaActual;
         const string TEXTURA_VIDA_LLENA = "Content/vidaPersonaje_llena.png";
         const string TEXTURA_VIDA_MEDIA = "Content/vidaPersonaje_media.png";
@@ -24,7 +24,7 @@ namespace ProyectoJuego
         public Protagonista(int x,int y,int ancho,int alto) : base(x,y,ancho,alto)
         {
             inventario = new List<Objeto>();
-            objetoActual = 0;
+            puntuacion = 0;
             vida = 100;
             velocidad = 4;
         }
@@ -262,9 +262,19 @@ namespace ProyectoJuego
             return vida;
         }
 
+        public int GetPuntuacion()
+        {
+            return puntuacion;
+        }
+
         public void ResetearInventario()
         {
             inventario.Clear();
+        }
+
+        public void AumentarPuntuacion()
+        {
+            puntuacion += 50;
         }
     }
 }

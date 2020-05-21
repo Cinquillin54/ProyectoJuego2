@@ -66,6 +66,12 @@ namespace ProyectoJuego
 
         public virtual void Resetear()
         {
+            ((Protagonista)protagonista).SetX(spawnProtagonista[0]);
+            ((Protagonista)protagonista).SetY(spawnProtagonista[1]);
+
+            ((Enemigo)enemigo).SetX(spawnEnemigo[0]);
+            ((Enemigo)enemigo).SetY(spawnEnemigo[1]);
+
             ((Protagonista)protagonista).ResetearInventario();
             ((Protagonista)protagonista).SetVida(75);
             ((Protagonista)protagonista).Curar();
@@ -158,6 +164,11 @@ namespace ProyectoJuego
                             if (objeto.DetectarColision(protagonista))
                             {
                                 objeto.Ocultar(1);
+
+                                if (objeto.GetType().Name.Contains("Puerta"))
+                                {
+                                    Resetear();
+                                }
                             }
                         }
                     }
@@ -166,7 +177,7 @@ namespace ProyectoJuego
                 {
                     Resetear();
                     MediaPlayer.Stop();
-                    PantallaManager.actualPantalla = 3;
+                    PantallaManager.actualPantalla = 7;
                 }
             }
         }
@@ -195,6 +206,9 @@ namespace ProyectoJuego
             
             spriteBatch.DrawString(font,"Vida:", new Vector2(800, 10), Color.White);
             spriteBatch.Draw(((Protagonista)protagonista).GetTexturaVida(),new Vector2(950,20),Color.White);
+
+            spriteBatch.DrawString(font, "Puntuacion:", new Vector2(100, 10), Color.White);
+            spriteBatch.DrawString(font,Convert.ToString(((Protagonista)protagonista).GetPuntuacion()), new Vector2(500, 10), Color.White);
 
             if (pausa)
             {

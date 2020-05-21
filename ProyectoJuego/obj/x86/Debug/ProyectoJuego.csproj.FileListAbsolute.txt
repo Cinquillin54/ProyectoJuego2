@@ -79,10 +79,11 @@ D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\vi
 D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\vidaPersonaje_baja.png
 D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\vidaPersonaje_llena.png
 D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\vidaPersonaje_media.png
-D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\Curacion.jpg
 D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\Pared.xnb
 D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\Puerta_abierta.png
 D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\Puerta_cerrada.png
 D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\Puerta_abierta.xnb
 D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\Puerta_cerrada.xnb
 D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\Llave.png
+D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\Curacion.png
+D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\Moneda.png

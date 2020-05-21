@@ -11,3 +11,5 @@ Equisde-300
 hola-100
 peuano3-90
 master-1000
+PRUEBANUMTRES-50
+HOLADONOMAR-100

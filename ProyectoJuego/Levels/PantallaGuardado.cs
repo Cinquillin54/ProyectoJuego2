@@ -6,21 +6,21 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ProyectoJuego
+namespace ProyectoJuego.Levels
 {
-    class PantallaPuntuaciones : Pantalla
+    class PantallaGuardado : Pantalla
     {
-        Dictionary<string, int> puntuaciones;
+        string nombre;
         public static int anteriorTecla;
-        public static int seleccionActual;
         const string TEXTURAS_PATH = "Content/pantallaInicio.jpg";
 
-        public PantallaPuntuaciones()
+        public PantallaGuardado()
         {
-            puntuaciones = new Dictionary<string, int>();
             anteriorTecla = 0;
-            seleccionActual = 0;
+            nombre = "";
         }
 
         public override void Initialize(GraphicsDevice graphicsDevice)
@@ -32,7 +32,7 @@ namespace ProyectoJuego
             music = media.ElementAt(0);
             MediaPlayer.IsRepeating = true;
 
-            if (File.Exists("Puntuaciones.txt"))
+            /*if (File.Exists("Puntuaciones.txt"))
             {
                 StreamReader reader = File.OpenText("Puntuaciones.txt");
                 string linea;
@@ -55,7 +55,7 @@ namespace ProyectoJuego
             {
                 StreamWriter writer = File.CreateText("Puntuaciones.txt");
                 writer.Close();
-            }
+            }*/
 
             try
             {
@@ -76,15 +76,47 @@ namespace ProyectoJuego
             }
         }
 
+        public void CargarDatos()
+        {
+            StreamWriter writer = File.AppendText("Puntuaciones.txt");
+
+            writer.WriteLine(nombre + "-" + Protagonista.puntuacion);
+                
+            writer.Close();
+        }
+
         public override void Update()
         {
             KeyboardState key = Keyboard.GetState();
 
-            if (key.IsKeyDown(Keys.Enter) && anteriorTecla > 6)
+            if (key.IsKeyDown(Keys.Space) && anteriorTecla > 8)
             {
+                nombre += " ";
+                anteriorTecla = 0;
+            }
+            else if (key.IsKeyDown(Keys.Back) && anteriorTecla > 6 && nombre.Length > 0)
+            {
+                nombre = nombre.Substring(0, nombre.Length - 1);
+                anteriorTecla = 0;
+            }
+            else if (key.IsKeyDown(Keys.Enter) && anteriorTecla > 3)
+            {
+                CargarDatos();
                 PantallaManager.actualPantalla = 5;
                 PantallaInicio.teclaTimer = 0;
+                Protagonista.puntuacion = 0;
                 anteriorTecla = 0;
+            }
+            else if (anteriorTecla > 8 && key.GetPressedKeys().Length > 0)
+            {
+                foreach (Keys k in key.GetPressedKeys())
+                {
+                    if (k.GetHashCode() >= 65 && k.GetHashCode() <= 90)
+                    {
+                        nombre += k.ToString();
+                        anteriorTecla = 0;
+                    }
+                }
             }
             else
             {
@@ -92,31 +124,23 @@ namespace ProyectoJuego
             }
         }
 
-        public string PuntuacionesATexto(Dictionary<string,int> puntuaciones)
-        {
-            int cont = 0;
-            string textoFinal = "";
-
-            foreach (KeyValuePair<string,int> puntuacion in puntuaciones.OrderByDescending(key => key.Value))
-            {
-                if (cont <= 9)
-                {
-                    textoFinal += puntuacion.Key + "-" + puntuacion.Value + "\n";
-                }
-                cont++;
-            }
-
-            return textoFinal;
-        }
-
-
         public override void Draw(SpriteBatch spriteBatch, SpriteFont font)
         {
             base.Draw(spriteBatch, font);
 
-            spriteBatch.DrawString(font, "TOP 1O", new Vector2(500, 20), Color.White);
-            spriteBatch.DrawString(font, "Volver (Enter)", new Vector2(430, 850), Color.White);
-            spriteBatch.DrawString(font, PuntuacionesATexto(puntuaciones), new Vector2(445, 80), Color.White);
+            Vector2 vectorNombre;
+
+            if (nombre.Length < 6)
+            {
+                vectorNombre = new Vector2(500, 500);
+            }
+            else
+            {
+                vectorNombre = new Vector2(300,500);
+            }
+
+            spriteBatch.DrawString(font, "Nombre", new Vector2(500, 200), Color.White);
+            spriteBatch.DrawString(font, nombre, vectorNombre, Color.White);
         }
     }
 }

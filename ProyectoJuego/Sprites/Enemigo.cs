@@ -19,7 +19,7 @@ namespace ProyectoJuego
         public Enemigo(int x,int y,int ancho,int alto) : base(x,y,ancho,alto)
         {
             cambioDireccion = 0;
-            velocidad = 2;
+            velocidad = 1;
         }
 
         public override void LoadContent(GraphicsDevice graphicsDevice)
@@ -229,7 +229,8 @@ namespace ProyectoJuego
             {
                 Moverse(IZQUIERDA);
             }
-            else if (protagonista.GetY() > hitbox.Y)
+            
+            if (protagonista.GetY() > hitbox.Y)
             {
                 Moverse(ABAJO);
             }

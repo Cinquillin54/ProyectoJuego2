@@ -7,24 +7,27 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using ProyectoJuego.Levels;
 
 namespace ProyectoJuego
 {
     class PantallaManager
     {
         Pantalla[] pantallas;
-        public static int actualPantalla = 4;
+        public static int actualPantalla = 5;
         public int controlMusica;
         public PantallaManager()
         {
             controlMusica = 0;
-            pantallas = new Pantalla[5];
+            pantallas = new Pantalla[7];
 
             pantallas[0] = new Nivel1();
-            pantallas[1] = new PantallaPuntuaciones();
-            pantallas[2] = new PantallaSalir();
-            pantallas[3] = new PantallaFin();
-            pantallas[4] = new PantallaInicio();
+            pantallas[1] = new Nivel2();
+            pantallas[2] = new PantallaPuntuaciones();
+            pantallas[3] = new PantallaSalir();
+            pantallas[4] = new PantallaFin();
+            pantallas[5] = new PantallaInicio();
+            pantallas[6] = new PantallaGuardado();
         }
 
         public void Update()

@@ -11,7 +11,7 @@ namespace ProyectoJuego
 {
     class Curacion : Objeto
     {
-        const string TEXTURAS_PATH = "Content/Curacion.jpg";
+        const string TEXTURAS_PATH = "Content/Curacion.png";
 
         public Curacion(int x, int y, int ancho, int alto) : base(x, y, ancho, alto)
         {

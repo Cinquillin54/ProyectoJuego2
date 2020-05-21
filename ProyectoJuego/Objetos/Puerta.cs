@@ -20,7 +20,12 @@ namespace ProyectoJuego
 
         public override void Funcion(Sprite protagonista)
         {
+            PantallaManager.actualPantalla++;
             
+            if (PantallaManager.actualPantalla == 2)
+            {
+                PantallaManager.actualPantalla = 6;
+            }
         }
 
         public int LlavesNecesarias()
@@ -30,10 +35,19 @@ namespace ProyectoJuego
 
         public override bool DetectarColision(Sprite sprite2)
         {
-            if (hitbox.Intersects(sprite2.GetHitbox()) && ((Protagonista)sprite2).Llaves() >= llaves)
+            if (hitbox.Intersects(sprite2.GetHitbox()))
             {
-                Funcion(sprite2);
-                return true;
+                if (((Protagonista)sprite2).Llaves() >= llaves)
+                {
+                    Funcion(sprite2);
+                    return true;
+                }
+                else
+                {
+                    ((Protagonista)sprite2).SetX(((Protagonista)sprite2).GetUltimaCoordenadaX());
+                    ((Protagonista)sprite2).SetY(((Protagonista)sprite2).GetUltimaCoordenadaY());
+                    return false;
+                }   
             }
             else
             {

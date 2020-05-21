@@ -1,21 +1,20 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System.IO;
-using Microsoft.Xna.Framework.Media;
 
 namespace ProyectoJuego
 {
-    class Nivel1 : Nivel
+    class Nivel2 : Nivel
     {
         const string BACKGROUND_PATH = "Content/level1Background.png";
-        public Nivel1() : base()
-        {
+        public Nivel2() : base()
+        {            
             spawnProtagonista[0] = 70;
             spawnProtagonista[1] = 200;
 
@@ -32,17 +31,17 @@ namespace ProyectoJuego
         }
         public override void CrearEscenario()
         {
-            muros.Add(new Muro(0,0,1100,50));
+            muros.Add(new Muro(0, 0, 1100, 50));
             muros.Add(new Muro(0, 0, 50, 950));
             muros.Add(new Muro(600, 0, 600, 600));
             objetos.Add(new Curacion(60, 700, 40, 40));
-            objetos.Add(new Puerta(70,850,100,100,1));
+            objetos.Add(new Puerta(70, 850, 100, 100, 1));
             objetos.Add(new Llave(500, 700, 60, 60));
             objetos.Add(new Moneda(800, 600, 60, 60));
         }
-        public override void LoadContent(GraphicsDevice graphicsDevice,List<Song> media)
+        public override void LoadContent(GraphicsDevice graphicsDevice, List<Song> media)
         {
-            base.LoadContent(graphicsDevice,media);
+            base.LoadContent(graphicsDevice, media);
 
             if (background == null)
             {
