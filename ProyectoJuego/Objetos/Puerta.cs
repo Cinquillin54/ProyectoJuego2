@@ -44,8 +44,9 @@ namespace ProyectoJuego
                 }
                 else
                 {
-                    ((Protagonista)sprite2).SetX(((Protagonista)sprite2).GetUltimaCoordenadaX());
-                    ((Protagonista)sprite2).SetY(((Protagonista)sprite2).GetUltimaCoordenadaY());
+                    //Puerta sin colision
+                    //((Protagonista)sprite2).SetX(((Protagonista)sprite2).GetUltimaCoordenadaX());
+                    //((Protagonista)sprite2).SetY(((Protagonista)sprite2).GetUltimaCoordenadaY());
                     return false;
                 }   
             }

@@ -142,7 +142,6 @@ namespace ProyectoJuego
 
                         ((Protagonista)protagonista).QuitarVida();
                     }
-
                     foreach (Muro muro in muros)
                     {
                         if (protagonista.DetectarColision(muro))
@@ -177,7 +176,8 @@ namespace ProyectoJuego
                 {
                     Resetear();
                     MediaPlayer.Stop();
-                    PantallaManager.actualPantalla = 7;
+                    Protagonista.puntuacion = 0;
+                    PantallaManager.actualPantalla = 4;
                 }
             }
         }
@@ -187,9 +187,6 @@ namespace ProyectoJuego
         public override void Draw(SpriteBatch spriteBatch,SpriteFont font)
         {
             base.Draw(spriteBatch, font);
-
-            protagonista.Draw(spriteBatch);
-            enemigo.Draw(spriteBatch);
 
             foreach (Muro muro in muros)
             {
@@ -204,11 +201,14 @@ namespace ProyectoJuego
                 }
             }
             
-            spriteBatch.DrawString(font,"Vida:", new Vector2(800, 10), Color.White);
-            spriteBatch.Draw(((Protagonista)protagonista).GetTexturaVida(),new Vector2(950,20),Color.White);
+            protagonista.Draw(spriteBatch);
+            enemigo.Draw(spriteBatch);
+
+            spriteBatch.DrawString(font, "Vida:", new Vector2(800, 10), Color.White);
+            spriteBatch.Draw(((Protagonista)protagonista).GetTexturaVida(), new Vector2(950, 20), Color.White);
 
             spriteBatch.DrawString(font, "Puntuacion:", new Vector2(100, 10), Color.White);
-            spriteBatch.DrawString(font,Convert.ToString(((Protagonista)protagonista).GetPuntuacion()), new Vector2(500, 10), Color.White);
+            spriteBatch.DrawString(font, Convert.ToString(((Protagonista)protagonista).GetPuntuacion()), new Vector2(500, 10), Color.White);
 
             if (pausa)
             {

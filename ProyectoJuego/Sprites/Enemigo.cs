@@ -19,7 +19,7 @@ namespace ProyectoJuego
         public Enemigo(int x,int y,int ancho,int alto) : base(x,y,ancho,alto)
         {
             cambioDireccion = 0;
-            velocidad = 1;
+            velocidad = 2;
         }
 
         public override void LoadContent(GraphicsDevice graphicsDevice)
@@ -151,7 +151,7 @@ namespace ProyectoJuego
 
             if (direccion == ARRIBA)
             {
-                temp.Y-=5;
+                temp.Y-=velocidad;
 
                 if (temp.Intersects(muro.GetHitbox()))
                 {
@@ -159,12 +159,13 @@ namespace ProyectoJuego
                 }
                 else
                 {
+                    hitbox.Y -= velocidad;
                     return true;
                 }
             }
             else if (direccion == DERECHA)
             {
-                temp.X+=5;
+                temp.X+=velocidad;
 
                 if (temp.Intersects(muro.GetHitbox()))
                 {
@@ -172,12 +173,13 @@ namespace ProyectoJuego
                 }
                 else
                 {
+                    hitbox.X += velocidad;
                     return true;
                 }
             }
             else if (direccion == ABAJO)
             {
-                temp.Y +=5;
+                temp.Y += velocidad;
 
                 if (temp.Intersects(muro.GetHitbox()))
                 {
@@ -185,12 +187,13 @@ namespace ProyectoJuego
                 }
                 else
                 {
+                    hitbox.Y += velocidad;
                     return true;
                 }
             }
             else if (direccion == IZQUIERDA)
             {
-                temp.X-=5;
+                temp.X -= velocidad;
 
                 if (temp.Intersects(muro.GetHitbox()))
                 {
@@ -198,6 +201,7 @@ namespace ProyectoJuego
                 }
                 else
                 {
+                    hitbox.X -= velocidad;
                     return true;
                 }
             }

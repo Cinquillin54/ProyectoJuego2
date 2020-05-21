@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Levels\Nivel1.cs" />
     <Compile Include="Levels\Nivel2.cs" />
-    <Compile Include="Levels\PantallaGuardado.cs" />
+    <Compile Include="Pantalla\PantallaGuardado.cs" />
     <Compile Include="Objetos\Moneda.cs" />
     <Compile Include="Pantalla\PantallaPuntuaciones.cs" />
     <Compile Include="Pantalla\PantallaSalir.cs" />

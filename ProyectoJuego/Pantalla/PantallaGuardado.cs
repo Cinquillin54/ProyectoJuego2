@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProyectoJuego.Levels
+namespace ProyectoJuego
 {
     class PantallaGuardado : Pantalla
     {
@@ -31,31 +31,6 @@ namespace ProyectoJuego.Levels
         {
             music = media.ElementAt(0);
             MediaPlayer.IsRepeating = true;
-
-            /*if (File.Exists("Puntuaciones.txt"))
-            {
-                StreamReader reader = File.OpenText("Puntuaciones.txt");
-                string linea;
-
-                do
-                {
-                    linea = reader.ReadLine();
-
-                    if (linea != null)
-                    {
-                        string[] datos = linea.Split('-');
-
-                        puntuaciones.Add(datos[0], Convert.ToInt32(datos[1]));
-                    }
-                } while (linea != null);
-
-                reader.Close();
-            }
-            else
-            {
-                StreamWriter writer = File.CreateText("Puntuaciones.txt");
-                writer.Close();
-            }*/
 
             try
             {
@@ -102,6 +77,14 @@ namespace ProyectoJuego.Levels
             else if (key.IsKeyDown(Keys.Enter) && anteriorTecla > 3)
             {
                 CargarDatos();
+                PantallaPuntuaciones.puntuaciones.Add(nombre,Protagonista.puntuacion);
+                PantallaManager.actualPantalla = 5;
+                PantallaInicio.teclaTimer = 0;
+                Protagonista.puntuacion = 0;
+                anteriorTecla = 0;
+            }
+            else if (key.IsKeyDown(Keys.Escape) && anteriorTecla > 3)
+            {
                 PantallaManager.actualPantalla = 5;
                 PantallaInicio.teclaTimer = 0;
                 Protagonista.puntuacion = 0;
@@ -132,15 +115,17 @@ namespace ProyectoJuego.Levels
 
             if (nombre.Length < 6)
             {
-                vectorNombre = new Vector2(500, 500);
+                vectorNombre = new Vector2(500, 300);
             }
             else
             {
-                vectorNombre = new Vector2(300,500);
+                vectorNombre = new Vector2(300,300);
             }
 
-            spriteBatch.DrawString(font, "Nombre", new Vector2(500, 200), Color.White);
+            spriteBatch.DrawString(font, "Nombre", new Vector2(500, 100), Color.White);
             spriteBatch.DrawString(font, nombre, vectorNombre, Color.White);
+            spriteBatch.DrawString(font, "Enter [Guardar]", new Vector2(300,500), Color.White);
+            spriteBatch.DrawString(font, "ESC [Volver al Menu]", new Vector2(300, 700), Color.White);
         }
     }
 }

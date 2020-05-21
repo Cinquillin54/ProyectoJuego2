@@ -11,7 +11,7 @@ namespace ProyectoJuego
 {
     class PantallaPuntuaciones : Pantalla
     {
-        Dictionary<string, int> puntuaciones;
+        public static Dictionary<string, int> puntuaciones;
         public static int anteriorTecla;
         public static int seleccionActual;
         const string TEXTURAS_PATH = "Content/pantallaInicio.jpg";
@@ -103,6 +103,7 @@ namespace ProyectoJuego
                 {
                     textoFinal += puntuacion.Key + "-" + puntuacion.Value + "\n";
                 }
+
                 cont++;
             }
 
