@@ -31,13 +31,41 @@ namespace ProyectoJuego
         }
         public override void CrearEscenario()
         {
-            muros.Add(new Muro(0, 0, 1100, 50));
-            muros.Add(new Muro(0, 0, 50, 950));
-            muros.Add(new Muro(600, 0, 600, 600));
-            objetos.Add(new Curacion(60, 700, 40, 40));
-            objetos.Add(new Puerta(70, 850, 100, 100, 1));
-            objetos.Add(new Llave(500, 700, 60, 60));
-            objetos.Add(new Moneda(800, 600, 60, 60));
+            //Bordes standard
+            muros.Add(new Muro(0, 0, 1200, 20));
+            muros.Add(new Muro(0, 0, 20, 950));
+            muros.Add(new Muro(1180, 0, 20, 950));
+            muros.Add(new Muro(9, 950, 1180, 20));
+            muros.Add(new Muro(0, 930, 1180, 20));
+            //Muros particulares
+            muros.Add(new Muro(150, 140, 380, 20));
+            muros.Add(new Muro(650, 140, 380, 20));
+            muros.Add(new Muro(150, 140, 20, 250));
+            muros.Add(new Muro(150, 520, 20, 250));
+            muros.Add(new Muro(150, 520, 20, 250));
+            muros.Add(new Muro(1030, 140, 20, 250));
+            muros.Add(new Muro(1030, 520, 20, 250));
+            muros.Add(new Muro(150, 750, 380, 20));
+            muros.Add(new Muro(650, 745, 380, 20));
+            muros.Add(new Muro(300, 270, 230, 20));
+            muros.Add(new Muro(650, 270, 250, 20));
+            muros.Add(new Muro(300, 600, 230, 20));
+            muros.Add(new Muro(650, 600, 250, 20));
+            muros.Add(new Muro(300, 270, 20, 120));
+            muros.Add(new Muro(300, 510, 20, 110));
+            muros.Add(new Muro(900, 270, 20, 120));
+            muros.Add(new Muro(900, 510, 20, 110));
+            muros.Add(new Muro(520, 270, 20, 350));
+            muros.Add(new Muro(630, 270, 20, 350));
+
+            //Objetos
+            objetos.Add(new Curacion(1100, 70, 40, 40));
+            objetos.Add(new Puerta(545, 390, 80, 100, 1));
+            objetos.Add(new Llave(950, 190, 50, 50));
+            objetos.Add(new Moneda(550, 50, 60, 60));
+            objetos.Add(new Moneda(850, 90, 60, 60));
+            objetos.Add(new Moneda(230, 600, 60, 60));
+            objetos.Add(new Moneda(1080, 830, 60, 60));
         }
         public override void LoadContent(GraphicsDevice graphicsDevice, List<Song> media)
         {
