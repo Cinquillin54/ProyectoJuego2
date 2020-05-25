@@ -73,18 +73,17 @@ namespace ProyectoJuego
             ((Enemigo)enemigo).SetY(spawnEnemigo[1]);
 
             ((Protagonista)protagonista).ResetearInventario();
-            ((Protagonista)protagonista).SetVida(75);
-            ((Protagonista)protagonista).Curar();
+            ((Protagonista)protagonista).SetVida(100);
 
             foreach (Objeto objeto in objetos)
             {
-                objeto.Ocultar(0);    
+                objeto.Ocultar(false);    
             }
         }
 
         public override void LoadContent(GraphicsDevice graphicsDevice,List<Song> media)
         {
-            music = media.ElementAt(2);
+            music = media[2];
             MediaPlayer.IsRepeating = true;
 
             CrearEscenario();
@@ -162,7 +161,7 @@ namespace ProyectoJuego
                         {
                             if (objeto.DetectarColision(protagonista))
                             {
-                                objeto.Ocultar(1);
+                                objeto.Ocultar(true);
 
                                 if (objeto.GetType().Name.Contains("Puerta"))
                                 {
@@ -177,7 +176,7 @@ namespace ProyectoJuego
                     Resetear();
                     MediaPlayer.Stop();
                     Protagonista.puntuacion = 0;
-                    PantallaManager.actualPantalla = 4;
+                    PantallaManager.actualPantalla = 6;
                 }
             }
         }
@@ -195,9 +194,9 @@ namespace ProyectoJuego
 
             for (int i = 0; i < objetos.Count(); i++)
             {
-                if (!((Objeto)objetos.ElementAt(i)).GetOculto())
+                if (!((Objeto)objetos[i]).GetOculto())
                 {
-                    objetos.ElementAt(i).Draw(spriteBatch);
+                    objetos[i].Draw(spriteBatch);
                 }
             }
             

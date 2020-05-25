@@ -14,11 +14,12 @@ namespace ProyectoJuego
     class Enemigo : Sprite
     {
         private int direccionActual;
-        private int cambioDireccion;
+        private int moverseLock;
+        private string direccionLock;
 
         public Enemigo(int x,int y,int ancho,int alto) : base(x,y,ancho,alto)
         {
-            cambioDireccion = 0;
+            moverseLock = 0;
             velocidad = 2;
         }
 
@@ -159,7 +160,7 @@ namespace ProyectoJuego
                 }
                 else
                 {
-                    hitbox.Y -= velocidad;
+                 
                     return true;
                 }
             }
@@ -173,7 +174,6 @@ namespace ProyectoJuego
                 }
                 else
                 {
-                    hitbox.X += velocidad;
                     return true;
                 }
             }
@@ -187,7 +187,6 @@ namespace ProyectoJuego
                 }
                 else
                 {
-                    hitbox.Y += velocidad;
                     return true;
                 }
             }
@@ -201,7 +200,6 @@ namespace ProyectoJuego
                 }
                 else
                 {
-                    hitbox.X -= velocidad;
                     return true;
                 }
             }

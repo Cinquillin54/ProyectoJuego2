@@ -29,7 +29,7 @@ namespace ProyectoJuego
 
         public override void LoadContent(GraphicsDevice graphicsDevice, List<Song> media)
         {
-            music = media.ElementAt(0);
+            music = media[0];
             MediaPlayer.IsRepeating = true;
 
             if (File.Exists("Puntuaciones.txt"))
@@ -82,7 +82,7 @@ namespace ProyectoJuego
 
             if (key.IsKeyDown(Keys.Enter) && anteriorTecla > 6)
             {
-                PantallaManager.actualPantalla = 5;
+                PantallaManager.actualPantalla = 9;
                 PantallaInicio.teclaTimer = 0;
                 anteriorTecla = 0;
             }
@@ -90,6 +90,21 @@ namespace ProyectoJuego
             {
                 anteriorTecla++;
             }
+        }
+
+        public static bool ComprobarNombre(string nombre)
+        {
+            bool encontrar = false;
+
+            foreach (KeyValuePair<string,int> puntuacion in puntuaciones)
+            {
+                if (puntuacion.Key.Equals(nombre))
+                {
+                    encontrar = true;
+                }
+            }
+
+            return encontrar;
         }
 
         public string PuntuacionesATexto(Dictionary<string,int> puntuaciones)

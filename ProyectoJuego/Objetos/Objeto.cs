@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,13 +25,13 @@ namespace ProyectoJuego
             return oculto;
         }
 
-        public void Ocultar(int confirmar)
+        public void Ocultar(bool confirmar)
         {
-            if (confirmar == 1)
+            if (confirmar == true)
             {
                 oculto = true;
             }
-            else if (confirmar == 0)
+            else if (confirmar == false)
             {
                 oculto = false;
             }

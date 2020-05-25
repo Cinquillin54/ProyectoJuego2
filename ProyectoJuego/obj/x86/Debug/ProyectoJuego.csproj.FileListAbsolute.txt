@@ -87,3 +87,7 @@ D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\Pu
 D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\Llave.png
 D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\Curacion.png
 D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\Moneda.png
+D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\musicaCurar.wma
+D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\musicaCurar.xnb
+D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\musicaGuardado.wma
+D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\musicaGuardado.xnb

@@ -82,7 +82,7 @@ namespace ProyectoJuego
                 if (seleccionActual == 1)
                 {
                     PantallaInicio.teclaTimer = 0;
-                    PantallaManager.actualPantalla = 5;
+                    PantallaManager.actualPantalla = 9;
                 }
                 else
                 {

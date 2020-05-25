@@ -54,10 +54,14 @@ namespace ProyectoJuego
             Song musicaInicio = Content.Load<Song>("musicaInicio");
             Song musicaMuerte = Content.Load<Song>("musicaMuerte");
             Song musicaNivel = Content.Load<Song>("musicaNivel");
+            Song musicaGuardado = Content.Load<Song>("musicaGuardado");
+            Song musicaCurar = Content.Load<Song>("musicaCurar");
 
             media.Add(musicaInicio);
             media.Add(musicaMuerte);
             media.Add(musicaNivel);
+            media.Add(musicaGuardado);
+            media.Add(musicaCurar);
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>("font");

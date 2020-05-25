@@ -14,20 +14,24 @@ namespace ProyectoJuego
     class PantallaManager
     {
         Pantalla[] pantallas;
-        public static int actualPantalla = 5;
+        public static int actualPantalla = 9;
         public int controlMusica;
         public PantallaManager()
         {
             controlMusica = 0;
-            pantallas = new Pantalla[7];
+            pantallas = new Pantalla[11];
 
             pantallas[0] = new Nivel1();
             pantallas[1] = new Nivel2();
-            pantallas[2] = new PantallaPuntuaciones();
-            pantallas[3] = new PantallaSalir();
-            pantallas[4] = new PantallaFin();
-            pantallas[5] = new PantallaInicio();
-            pantallas[6] = new PantallaGuardado();
+            pantallas[2] = new Nivel3();
+            pantallas[3] = new Nivel4();
+            pantallas[4] = new Nivel5();
+            pantallas[5] = new Nivel6();
+            pantallas[6] = new PantallaPuntuaciones();
+            pantallas[7] = new PantallaSalir();
+            pantallas[8] = new PantallaFin();
+            pantallas[9] = new PantallaInicio();
+            pantallas[10] = new PantallaGuardado();
         }
 
         public void Update()

@@ -20,6 +20,18 @@
 /processorParam:TextureFormat=Compressed
 /build:font.spritefont
 
+#begin musicaCurar.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:musicaCurar.mp3
+
+#begin musicaGuardado.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:musicaGuardado.mp3
+
 #begin musicaInicio.mp3
 /importer:Mp3Importer
 /processor:SongProcessor

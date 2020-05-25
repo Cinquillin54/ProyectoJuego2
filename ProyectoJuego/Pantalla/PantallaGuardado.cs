@@ -29,7 +29,7 @@ namespace ProyectoJuego
 
         public override void LoadContent(GraphicsDevice graphicsDevice, List<Song> media)
         {
-            music = media.ElementAt(0);
+            music = media[3];
             MediaPlayer.IsRepeating = true;
 
             try
@@ -49,6 +49,18 @@ namespace ProyectoJuego
 
                 writer.WriteLine("Error en " + GetType() + " no se encontró el archivo");
             }
+        }
+
+        public void SobreescribirDatos()
+        {
+            StreamWriter writer = File.CreateText("Puntuaciones.txt");
+
+            foreach (KeyValuePair<string,int> puntuacion in PantallaPuntuaciones.puntuaciones)
+            {
+                writer.WriteLine(puntuacion.Key + "-" + puntuacion.Value);
+            }
+
+            writer.Close();
         }
 
         public void CargarDatos()
@@ -76,16 +88,25 @@ namespace ProyectoJuego
             }
             else if (key.IsKeyDown(Keys.Enter) && anteriorTecla > 3)
             {
-                CargarDatos();
-                PantallaPuntuaciones.puntuaciones.Add(nombre,Protagonista.puntuacion);
-                PantallaManager.actualPantalla = 5;
+                if (PantallaPuntuaciones.ComprobarNombre(nombre))
+                {
+                    PantallaPuntuaciones.puntuaciones[nombre] = Protagonista.puntuacion;
+                    SobreescribirDatos();
+                }
+                else
+                {
+                    PantallaPuntuaciones.puntuaciones.Add(nombre, Protagonista.puntuacion);
+                    CargarDatos();
+                }
+
+                PantallaManager.actualPantalla = 9;
                 PantallaInicio.teclaTimer = 0;
                 Protagonista.puntuacion = 0;
                 anteriorTecla = 0;
             }
             else if (key.IsKeyDown(Keys.Escape) && anteriorTecla > 3)
             {
-                PantallaManager.actualPantalla = 5;
+                PantallaManager.actualPantalla = 9;
                 PantallaInicio.teclaTimer = 0;
                 Protagonista.puntuacion = 0;
                 anteriorTecla = 0;

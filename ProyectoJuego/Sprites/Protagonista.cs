@@ -256,6 +256,19 @@ namespace ProyectoJuego
         public void SetVida(int vida)
         {
             this.vida = vida;
+
+            if (vida == 100)
+            {
+                vidaActual = texturas["vida_llena"];
+            }
+            else if (vida < 100 && vida >= 50)
+            {
+                vidaActual = texturas["vida_media"];
+            }
+            else if (vida < 50 && vida > 0)
+            {
+                vidaActual = texturas["vida_baja"];
+            }
         }
         public int GetVida()
         {

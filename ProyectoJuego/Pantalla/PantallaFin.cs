@@ -25,7 +25,7 @@ namespace ProyectoJuego
 
         public override void LoadContent(GraphicsDevice graphicsDevice,List<Song> media)
         {
-            music = media.ElementAt(1);
+            music = media[1];
             MediaPlayer.IsRepeating = false;
 
             try

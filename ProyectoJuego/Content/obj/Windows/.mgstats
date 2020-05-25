@@ -1,3 +1,3 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/Puerta_abierta.png","D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/bin/Windows/Puerta_abierta.xnb","TextureProcessor","Texture2DContent",17711,34229,0,4483081
-"D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/Puerta_cerrada.png","D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/bin/Windows/Puerta_cerrada.xnb","TextureProcessor","Texture2DContent",31046,33841,0,0119676
+"D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/musicaCurar.mp3","D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/bin/Windows/musicaCurar.xnb","SongProcessor","SongContent",21314,129,0,6088915
+"D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/musicaGuardado.mp3","D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/bin/Windows/musicaGuardado.xnb","SongProcessor","SongContent",379634,132,0,2862433
