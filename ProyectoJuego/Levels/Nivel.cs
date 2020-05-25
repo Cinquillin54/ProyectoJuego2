@@ -18,7 +18,7 @@ namespace ProyectoJuego
         protected int[] spawnProtagonista;
         protected int[] spawnEnemigo;
         protected Texture2D texturaMuro;
-        protected List<Sprite> muros;
+        protected List<Muro> muros;
         protected Sprite protagonista;
         protected Sprite enemigo;
         protected List<Sprite> objetos;
@@ -29,7 +29,7 @@ namespace ProyectoJuego
             spawnProtagonista = new int[2];
             spawnEnemigo = new int[2];
 
-            muros = new List<Sprite>();
+            muros = new List<Muro>();
             objetos = new List<Sprite>();
         }
 
@@ -129,7 +129,7 @@ namespace ProyectoJuego
             {
                 if (!ComprobarDerrota())
                 {
-                    ((Enemigo)enemigo).Perseguir(protagonista);
+                    ((Enemigo)enemigo).Perseguir(protagonista,muros);
                     protagonista.Update();
 
                     if (enemigo.DetectarColision(protagonista))
@@ -141,17 +141,13 @@ namespace ProyectoJuego
 
                         ((Protagonista)protagonista).QuitarVida();
                     }
+
                     foreach (Muro muro in muros)
                     {
                         if (protagonista.DetectarColision(muro))
                         {
                             protagonista.SetX(protagonista.GetUltimaCoordenadaX());
                             protagonista.SetY(protagonista.GetUltimaCoordenadaY());
-                        }
-
-                        if (enemigo.DetectarColision(muro))
-                        {
-                            ((Enemigo)enemigo).CambiarDirección(muro);
                         }
                     }
 

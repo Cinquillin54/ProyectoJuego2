@@ -19,7 +19,7 @@ namespace ProyectoJuego
             spawnProtagonista[0] = 40;
             spawnProtagonista[1] = 300;
 
-            spawnEnemigo[0] = 40;
+            spawnEnemigo[0] = 65;
             spawnEnemigo[1] = 60;
 
             protagonista = new Protagonista(spawnProtagonista[0], spawnProtagonista[1], 60, 80);
