@@ -22,14 +22,7 @@ namespace ProyectoJuego
 
         public override void Funcion(Sprite protagonista)
         {
-            if (((Protagonista)protagonista).GetVida() == 100)
-            {
-                
-            }
-            else
-            {
-                ((Protagonista)protagonista).Curar();
-            }
+            ((Protagonista)protagonista).Curar();
         }
 
         public override void LoadContent(GraphicsDevice graphicsDevice)

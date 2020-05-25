@@ -176,7 +176,7 @@ namespace ProyectoJuego
                     Resetear();
                     MediaPlayer.Stop();
                     Protagonista.puntuacion = 0;
-                    PantallaManager.actualPantalla = 6;
+                    PantallaManager.actualPantalla = 8;
                 }
             }
         }
