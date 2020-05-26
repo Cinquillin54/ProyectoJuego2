@@ -229,6 +229,11 @@ namespace ProyectoJuego
             }
         }
 
+        public void SetVelocidad(int velocidad)
+        {
+            this.velocidad = velocidad;
+        }
+
         public void Perseguir(Sprite protagonista, List<Muro> muros)
         {
             if (protagonista.GetX() > hitbox.X && PoderMoverse(muros, DERECHA))

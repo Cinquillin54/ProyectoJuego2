@@ -75,6 +75,9 @@ namespace ProyectoJuego
             ((Protagonista)protagonista).ResetearInventario();
             ((Protagonista)protagonista).SetVida(100);
 
+            ((Enemigo)enemigo).SetVida(100);
+            ((Enemigo)enemigo).SetVelocidad(1);
+
             foreach (Objeto objeto in objetos)
             {
                 objeto.Ocultar(false);    
@@ -170,6 +173,7 @@ namespace ProyectoJuego
                     if (((Enemigo)enemigo).GetVida() <= 0)
                     {
                         PantallaManager.actualPantalla++;
+                        Resetear();
                     }
                 }
                 else
