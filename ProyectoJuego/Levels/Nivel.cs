@@ -166,6 +166,11 @@ namespace ProyectoJuego
                             }
                         }
                     }
+                    
+                    if (((Enemigo)enemigo).GetVida() <= 0)
+                    {
+                        PantallaManager.actualPantalla++;
+                    }
                 }
                 else
                 {
@@ -188,14 +193,16 @@ namespace ProyectoJuego
                 muro.Draw(spriteBatch);
             }
 
-            for (int i = 0; i < objetos.Count(); i++)
+            foreach (Objeto objeto in objetos)
             {
-                if (!((Objeto)objetos[i]).GetOculto())
+                if (!objeto.GetOculto())
                 {
-                    objetos[i].Draw(spriteBatch);
+                    objeto.Draw(spriteBatch);
                 }
             }
-            
+
+            ((Protagonista)protagonista).DibujarPistola(spriteBatch,muros,enemigo);
+
             protagonista.Draw(spriteBatch);
             enemigo.Draw(spriteBatch);
 

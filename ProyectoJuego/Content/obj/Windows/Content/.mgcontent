@@ -4,6 +4,7 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
+    <File>D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/BossTheme1.mp3</File>
     <File>D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/font.spritefont</File>
     <File>D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/musicaCurar.mp3</File>
     <File>D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/musicaGuardado.mp3</File>
@@ -17,6 +18,7 @@
     <File>D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/Puerta_cerrada.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

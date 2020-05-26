@@ -107,7 +107,7 @@ namespace ProyectoJuego
                 else if (seleccionActual == 0)
                 {
                     PantallaPuntuaciones.anteriorTecla = 0;
-                    PantallaManager.actualPantalla = 0;
+                    PantallaManager.actualPantalla = 3;
                 }
             }
             else

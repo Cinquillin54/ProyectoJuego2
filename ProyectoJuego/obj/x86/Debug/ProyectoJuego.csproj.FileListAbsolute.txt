@@ -91,3 +91,7 @@ D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\mu
 D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\musicaCurar.xnb
 D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\musicaGuardado.wma
 D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\musicaGuardado.xnb
+D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\disparo.png
+D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\pistola.png
+D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\BossTheme1.wma
+D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\BossTheme1.xnb

@@ -203,6 +203,43 @@ namespace ProyectoJuego
             return cont;
         }
 
+        public void Disparar()
+        {
+            foreach (Objeto objeto in inventario)
+            {
+                if (objeto.GetType().Name.Contains("Pistola"))
+                {
+                    objeto.Funcion(this);
+                }
+            }
+        }
+
+        public bool TienePistola()
+        {
+            bool encontrado = false;
+
+            foreach (Objeto objeto in inventario)
+            {
+                if (objeto.GetType().Name.Contains("Pistola"))
+                {
+                    encontrado = true;
+                }
+            }
+
+            return encontrado;
+        }
+
+        public void DibujarPistola(SpriteBatch spriteBatch,List<Muro> muros,Sprite enemigo)
+        {
+            foreach (Objeto objeto in inventario)
+            {
+                if (objeto.GetType().Name.Contains("Pistola"))
+                {
+                    ((Pistola)objeto).DibujarBala(spriteBatch,muros,enemigo);
+                }
+            }
+        }
+
         public override void Update()
         {
             ultimaCoordenadaX = hitbox.X;
@@ -233,6 +270,11 @@ namespace ProyectoJuego
             else
             {
                 Animar(QUIETO);
+            }
+
+            if (key.IsKeyDown(Keys.Space))
+            {
+                Disparar();
             }
 
             if (hitbox.X < 0)
@@ -282,7 +324,36 @@ namespace ProyectoJuego
 
         public void ResetearInventario()
         {
+            foreach (Objeto objeto in inventario)
+            {
+                if (objeto.GetType().Name.Contains("Pistola"))
+                {
+                    ((Pistola)objeto).Reseteo();
+                }
+            }
+
             inventario.Clear();
+        }
+
+        public void EnemigoImpactado(Sprite enemigo)
+        {
+            List<Rectangle> balas = new List<Rectangle>();
+
+            foreach (Objeto objeto in inventario)
+            {
+                if (objeto.GetType().Name.Contains("Pistola"))
+                {
+                    balas = ((Pistola)objeto).GetBalas();
+                }
+            }
+
+            foreach (Rectangle bala in balas)
+            {
+                if (bala.Intersects(enemigo.GetHitbox()))
+                {
+                    ((Enemigo)enemigo).Impacto();
+                }
+            }
         }
 
         public void AumentarPuntuacion()

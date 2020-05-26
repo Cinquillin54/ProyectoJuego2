@@ -13,13 +13,11 @@ namespace ProyectoJuego
 {
     class Enemigo : Sprite
     {
-        //private int direccionActual;
-        //private int moverseLock;
-        private int anteriorPosicion;
+        int vida;
 
-        public Enemigo(int x,int y,int ancho,int alto) : base(x,y,ancho,alto)
+        public Enemigo(int x, int y, int ancho, int alto) : base(x, y, ancho, alto)
         {
-            //moverseLock = 0;
+            vida = 100;
             velocidad = 2;
         }
 
@@ -202,6 +200,23 @@ namespace ProyectoJuego
 
             return colisionado;
         }
+
+        public void Impacto()
+        {
+            velocidad++;
+            vida -= 15;
+        }
+
+        public void SetVida(int vida)
+        {
+            this.vida = vida;
+        }
+
+        public int GetVida()
+        {
+            return vida;
+        }
+
         public override bool DetectarColision(Sprite sprite2)
         {
             if (hitbox.Intersects(sprite2.GetHitbox()))

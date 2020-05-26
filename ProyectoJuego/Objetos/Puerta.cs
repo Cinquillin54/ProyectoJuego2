@@ -22,7 +22,7 @@ namespace ProyectoJuego
         {
             PantallaManager.actualPantalla++;
             
-            if (PantallaManager.actualPantalla == 3)
+            if (PantallaManager.actualPantalla == 4)
             {
                 PantallaManager.actualPantalla = 10;
             }
