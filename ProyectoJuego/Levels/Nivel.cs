@@ -16,19 +16,20 @@ namespace ProyectoJuego
     {
         const string TEXTURA_MURO_PATH = "Content/pared.jpg";
         protected int[] spawnProtagonista;
-        protected int[] spawnEnemigo;
+        protected List<int> spawnEnemigo;
         protected Texture2D texturaMuro;
         protected List<Muro> muros;
         protected Sprite protagonista;
-        protected Sprite enemigo;
+        protected List<Sprite> enemigos;
         protected List<Sprite> objetos;
         protected bool pausa;
         protected int pausaTemp;
         public Nivel()
         {
             spawnProtagonista = new int[2];
-            spawnEnemigo = new int[2];
+            spawnEnemigo = new List<int>();
 
+            enemigos = new List<Sprite>();
             muros = new List<Muro>();
             objetos = new List<Sprite>();
         }
@@ -69,14 +70,24 @@ namespace ProyectoJuego
             ((Protagonista)protagonista).SetX(spawnProtagonista[0]);
             ((Protagonista)protagonista).SetY(spawnProtagonista[1]);
 
-            ((Enemigo)enemigo).SetX(spawnEnemigo[0]);
-            ((Enemigo)enemigo).SetY(spawnEnemigo[1]);
+            int cont = 2;
+
+            foreach (Sprite enemigo in enemigos)
+            {
+                ((Enemigo)enemigo).SetX(spawnEnemigo[cont - 2]);
+                ((Enemigo)enemigo).SetY(spawnEnemigo[cont - 1]);
+
+                cont++;
+            }
 
             ((Protagonista)protagonista).ResetearInventario();
             ((Protagonista)protagonista).SetVida(100);
 
-            ((Enemigo)enemigo).SetVida(100);
-            ((Enemigo)enemigo).SetVelocidad(1);
+            foreach (Sprite enemigo in enemigos)
+            {
+                ((Enemigo)enemigo).SetVida(100);
+                ((Enemigo)enemigo).SetVelocidad(3);
+            }
 
             foreach (Objeto objeto in objetos)
             {
@@ -92,7 +103,11 @@ namespace ProyectoJuego
             CrearEscenario();
 
             protagonista.LoadContent(graphicsDevice);
-            enemigo.LoadContent(graphicsDevice);
+
+            foreach (Sprite enemigo in enemigos)
+            {
+                enemigo.LoadContent(graphicsDevice);
+            }
 
             foreach (Muro muro in muros)
             {
@@ -132,17 +147,47 @@ namespace ProyectoJuego
             {
                 if (!ComprobarDerrota())
                 {
-                    ((Enemigo)enemigo).Perseguir(protagonista,muros);
+                    if (PantallaManager.actualPantalla == 3)
+                    {
+                        foreach (Sprite enemigo in enemigos)
+                        {
+                            ((Enemigo)enemigo).Perseguir(protagonista,muros);
+                        }
+                    }
+                    else
+                    {
+                        foreach (Sprite enemigo in enemigos)
+                        {
+                            foreach (Muro muro in muros)
+                            {
+                                if (enemigo.DetectarColision(muro))
+                                {
+                                    ((Enemigo)enemigo).CambiarDirección(muro);
+                                }
+
+                                if (((Enemigo)enemigo).GetTempDireccion() <= 0)
+                                {
+                                    ((Enemigo)enemigo).CambiarDirección(muro);
+                                }
+                            }
+
+                            ((Enemigo)enemigo).Moverse(enemigo.GetPosicionActual());
+                        }
+                    }
+                       
                     protagonista.Update();
 
-                    if (enemigo.DetectarColision(protagonista))
+                    foreach (Sprite enemigo in enemigos)
                     {
-                        protagonista.SetX(spawnProtagonista[0]);
-                        protagonista.SetY(spawnProtagonista[1]);
-                        enemigo.SetX(spawnEnemigo[0]);
-                        enemigo.SetY(spawnEnemigo[1]);
+                        if (enemigo.DetectarColision(protagonista))
+                        {
+                            protagonista.SetX(spawnProtagonista[0]);
+                            protagonista.SetY(spawnProtagonista[1]);
+                            enemigo.SetX(spawnEnemigo[0]);
+                            enemigo.SetY(spawnEnemigo[1]);
 
-                        ((Protagonista)protagonista).QuitarVida();
+                            ((Protagonista)protagonista).QuitarVida();
+                        }
                     }
 
                     foreach (Muro muro in muros)
@@ -169,11 +214,14 @@ namespace ProyectoJuego
                             }
                         }
                     }
-                    
-                    if (((Enemigo)enemigo).GetVida() <= 0)
+
+                    foreach (Sprite enemigo in enemigos)
                     {
-                        PantallaManager.actualPantalla++;
-                        Resetear();
+                        if (((Enemigo)enemigo).GetVida() <= 0)
+                        {
+                            PantallaManager.actualPantalla++;
+                            Resetear();
+                        }
                     }
                 }
                 else
@@ -205,10 +253,18 @@ namespace ProyectoJuego
                 }
             }
 
-            ((Protagonista)protagonista).DibujarPistola(spriteBatch,muros,enemigo);
+
+            foreach (Sprite enemigo in enemigos)
+            {
+                ((Protagonista)protagonista).DibujarPistola(spriteBatch, muros, enemigo);
+            }
 
             protagonista.Draw(spriteBatch);
-            enemigo.Draw(spriteBatch);
+
+            foreach (Sprite enemigo in enemigos)
+            {
+                enemigo.Draw(spriteBatch);
+            }
 
             spriteBatch.DrawString(font, "Vida:", new Vector2(800, 10), Color.White);
             spriteBatch.Draw(((Protagonista)protagonista).GetTexturaVida(), new Vector2(950, 20), Color.White);

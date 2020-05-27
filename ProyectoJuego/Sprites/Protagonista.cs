@@ -276,25 +276,8 @@ namespace ProyectoJuego
             {
                 Disparar();
             }
-
-            if (hitbox.X < 0)
-            {
-                hitbox.X = 0;
-            }
-            else if (hitbox.X > 1135)
-            {
-                hitbox.X = 1135;
-            }
-
-            if (hitbox.Y < 0)
-            {
-                hitbox.Y = 0;
-            }
-            else if (hitbox.Y > 865)
-            {
-                hitbox.Y = 865;
-            }
         }
+
         public void SetVida(int vida)
         {
             this.vida = vida;

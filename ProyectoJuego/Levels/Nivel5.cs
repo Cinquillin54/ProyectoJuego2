@@ -18,11 +18,11 @@ namespace ProyectoJuego
             spawnProtagonista[0] = 70;
             spawnProtagonista[1] = 200;
 
-            spawnEnemigo[0] = 100;
-            spawnEnemigo[1] = 50;
+            spawnEnemigo.Add(100);
+            spawnEnemigo.Add(50);
 
             protagonista = new Protagonista(spawnProtagonista[0], spawnProtagonista[1], 60, 80);
-            enemigo = new Enemigo(spawnEnemigo[0], spawnEnemigo[1], 60, 80);
+            enemigos.Add(new Enemigo(spawnEnemigo[0], spawnEnemigo[1], 60, 80));
         }
 
         public override void Initialize(GraphicsDevice graphicsDevice)

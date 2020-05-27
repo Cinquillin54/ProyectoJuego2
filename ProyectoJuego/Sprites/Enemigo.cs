@@ -13,10 +13,15 @@ namespace ProyectoJuego
 {
     class Enemigo : Sprite
     {
+        Random r;
         int vida;
+        int direccionActual;
+        int tempDireccion;
 
         public Enemigo(int x, int y, int ancho, int alto) : base(x, y, ancho, alto)
         {
+            tempDireccion = 10;
+            r = new Random();
             vida = 100;
             velocidad = 2;
         }
@@ -86,6 +91,12 @@ namespace ProyectoJuego
                 Console.WriteLine("Error");
             }
         }
+
+        public int GetTempDireccion()
+        {
+            return tempDireccion;
+        }
+
         public override void Animar(int direccion)
         {
             if (direccion == 0)
@@ -121,8 +132,24 @@ namespace ProyectoJuego
                 texturaActual = texturas[direccionLetras + frame];
             }
         }
+
+        public void CambiarDirección(Muro muro)
+        {
+            tempDireccion = 10;
+
+            while (!PoderMoverse(muro, direccionActual))
+            {
+                direccionActual = r.Next(0,4);
+            }
+
+            Moverse(direccionActual);
+        }
+
         public void Moverse(int direccion)
         {
+            ultimaCoordenadaX = hitbox.X;
+            ultimaCoordenadaY = hitbox.Y;
+
             switch (direccion)
             {
                 case ARRIBA:
@@ -142,9 +169,11 @@ namespace ProyectoJuego
                     hitbox.X-=velocidad;
                     break;
             }
+
+            tempDireccion--;
         }
 
-        public bool PoderMoverse(List<Muro> muros, int direccion)
+        public bool PoderMoverse(Muro muro, int direccion)
         {
             bool colisionado = true;
             Rectangle temp = hitbox;
@@ -152,50 +181,23 @@ namespace ProyectoJuego
             if (direccion == ARRIBA)
             {
                 temp.Y-=velocidad;
-
-                foreach (Muro muro in muros)
-                {
-                    if (temp.Intersects(muro.GetHitbox()))
-                    {
-                        colisionado = false;
-                    }
-                }
             }
             else if (direccion == DERECHA)
             {
                 temp.X += velocidad;
-
-                foreach (Muro muro in muros)
-                {
-                    if (temp.Intersects(muro.GetHitbox()))
-                    {
-                        colisionado = false;
-                    }
-                }
             }
             else if (direccion == ABAJO)
             {
                 temp.Y += velocidad;
-
-                foreach (Muro muro in muros)
-                {
-                    if (temp.Intersects(muro.GetHitbox()))
-                    {
-                        colisionado = false;
-                    }
-                }
             }
             else if (direccion == IZQUIERDA)
             {
                 temp.X -= velocidad;
+            }
 
-                foreach (Muro muro in muros)
-                {
-                    if (temp.Intersects(muro.GetHitbox()))
-                    {
-                        colisionado = false;
-                    }
-                }
+            if (temp.Intersects(muro.GetHitbox()))
+            {
+                colisionado = false;
             }
 
             return colisionado;
@@ -203,7 +205,11 @@ namespace ProyectoJuego
 
         public void Impacto()
         {
-            velocidad++;
+            if (vida <= 35)
+            {
+                velocidad++;
+            }
+
             vida -= 15;
         }
 
@@ -221,6 +227,9 @@ namespace ProyectoJuego
         {
             if (hitbox.Intersects(sprite2.GetHitbox()))
             {
+                hitbox.X = ultimaCoordenadaX;
+                hitbox.Y = ultimaCoordenadaY;
+
                 return true;
             }
             else
@@ -234,22 +243,22 @@ namespace ProyectoJuego
             this.velocidad = velocidad;
         }
 
-        public void Perseguir(Sprite protagonista, List<Muro> muros)
+        public void Perseguir(Sprite protagonista,List<Muro> muros)
         {
-            if (protagonista.GetX() > hitbox.X && PoderMoverse(muros, DERECHA))
+            if (protagonista.GetX() > hitbox.X)
             {
                 Moverse(DERECHA);
             }
-            else if (protagonista.GetX() < hitbox.X && PoderMoverse(muros, IZQUIERDA))
+            else if (protagonista.GetX() < hitbox.X)
             {
                 Moverse(IZQUIERDA);
             }
 
-            if (protagonista.GetY() > hitbox.Y && PoderMoverse(muros, ABAJO))
+            if (protagonista.GetY() > hitbox.Y)
             {
                 Moverse(ABAJO);
             }
-            else if (protagonista.GetY() < hitbox.Y && PoderMoverse(muros, ARRIBA))
+            else if (protagonista.GetY() < hitbox.Y)
             {
                 Moverse(ARRIBA);
             }
