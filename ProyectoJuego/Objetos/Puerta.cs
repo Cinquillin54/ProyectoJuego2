@@ -20,11 +20,12 @@ namespace ProyectoJuego
 
         public override void Funcion(Sprite protagonista)
         {
+            PantallaManager.anteriorPantalla = PantallaManager.actualPantalla;
             PantallaManager.actualPantalla++;
             
-            if (PantallaManager.actualPantalla == 6)
+            if (PantallaManager.actualPantalla == 7)
             {
-                PantallaManager.actualPantalla = 10;
+                PantallaManager.actualPantalla = 11;
             }
         }
 
@@ -44,7 +45,7 @@ namespace ProyectoJuego
                 }
                 else
                 {
-                    //Puerta sin colision
+                    //Puerta con colision
                     //((Protagonista)sprite2).SetX(((Protagonista)sprite2).GetUltimaCoordenadaX());
                     //((Protagonista)sprite2).SetY(((Protagonista)sprite2).GetUltimaCoordenadaY());
                     return false;

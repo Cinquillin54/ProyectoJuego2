@@ -23,6 +23,7 @@ namespace ProyectoJuego
         public Pantalla()
         {
         }
+
         public abstract void LoadContent(GraphicsDevice graphicsDevice, List<Song> media);
 
         public abstract void Update();

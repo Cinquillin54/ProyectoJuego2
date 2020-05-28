@@ -95,3 +95,5 @@ D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\di
 D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\pistola.png
 D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\BossTheme1.wma
 D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\BossTheme1.xnb
+D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\musicaInicio.mp3
+D:\EjerciciosVisual\ProyectoJuego\ProyectoJuego\bin\Windows\x86\Debug\Content\bala.png

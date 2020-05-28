@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/musicaInicio.mp3</SourceFile>
-  <SourceTime>2020-05-15T20:09:48.6567648+02:00</SourceTime>
+  <SourceTime>2020-05-27T23:53:53.2817847+02:00</SourceTime>
   <DestFile>D:/EjerciciosVisual/ProyectoJuego/ProyectoJuego/Content/bin/Windows/musicaInicio.xnb</DestFile>
-  <DestTime>2020-05-15T20:16:46.628394+02:00</DestTime>
+  <DestTime>2020-05-27T23:58:04.7310358+02:00</DestTime>
   <Importer>Mp3Importer</Importer>
   <ImporterTime>2018-12-08T17:35:54+01:00</ImporterTime>
   <Processor>SongProcessor</Processor>

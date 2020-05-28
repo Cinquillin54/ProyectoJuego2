@@ -19,12 +19,12 @@ namespace ProyectoJuego
 
         public PantallaGuardado()
         {
-            anteriorTecla = 0;
-            nombre = "";
         }
 
         public override void Initialize(GraphicsDevice graphicsDevice)
         {
+            anteriorTecla = 0;
+            nombre = "";
         }
 
         public override void LoadContent(GraphicsDevice graphicsDevice, List<Song> media)
@@ -99,14 +99,14 @@ namespace ProyectoJuego
                     CargarDatos();
                 }
 
-                PantallaManager.actualPantalla = 9;
+                PantallaManager.actualPantalla = 10;
                 PantallaInicio.teclaTimer = 0;
                 Protagonista.puntuacion = 0;
                 anteriorTecla = 0;
             }
             else if (key.IsKeyDown(Keys.Escape) && anteriorTecla > 3)
             {
-                PantallaManager.actualPantalla = 9;
+                PantallaManager.actualPantalla = 10;
                 PantallaInicio.teclaTimer = 0;
                 Protagonista.puntuacion = 0;
                 anteriorTecla = 0;

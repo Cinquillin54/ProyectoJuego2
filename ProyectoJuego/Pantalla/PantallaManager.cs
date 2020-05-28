@@ -14,12 +14,13 @@ namespace ProyectoJuego
     class PantallaManager
     {
         Pantalla[] pantallas;
-        public static int actualPantalla = 9;
+        public static int actualPantalla = 10;
+        public static int anteriorPantalla = 0;
         public int controlMusica;
         public PantallaManager()
         {
             controlMusica = 0;
-            pantallas = new Pantalla[11];
+            pantallas = new Pantalla[12];
 
             pantallas[0] = new Nivel1();
             pantallas[1] = new Nivel2();
@@ -27,11 +28,12 @@ namespace ProyectoJuego
             pantallas[3] = new Nivel4();
             pantallas[4] = new Nivel5();
             pantallas[5] = new Nivel6();
-            pantallas[6] = new PantallaPuntuaciones();
-            pantallas[7] = new PantallaSalir();
-            pantallas[8] = new PantallaFin();
-            pantallas[9] = new PantallaInicio();
-            pantallas[10] = new PantallaGuardado();
+            pantallas[6] = new Nivel7();
+            pantallas[7] = new PantallaPuntuaciones();
+            pantallas[8] = new PantallaSalir();
+            pantallas[9] = new PantallaFin();
+            pantallas[10] = new PantallaInicio();
+            pantallas[11] = new PantallaGuardado();
         }
 
         public void Update()
@@ -40,7 +42,10 @@ namespace ProyectoJuego
             {
                 controlMusica = actualPantalla;
 
-                pantallas[actualPantalla].PlaySong();
+                if (anteriorPantalla != 10 || actualPantalla >= 0 && actualPantalla <= 6)
+                {
+                    pantallas[actualPantalla].PlaySong();
+                }
             }
 
             pantallas[actualPantalla].Update();

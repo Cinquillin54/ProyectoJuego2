@@ -72,12 +72,12 @@ namespace ProyectoJuego
 
             int cont = 2;
 
-            foreach (Sprite enemigo in enemigos)
+            for (int i=0; i<enemigos.Count;i++)
             {
-                ((Enemigo)enemigo).SetX(spawnEnemigo[cont - 2]);
-                ((Enemigo)enemigo).SetY(spawnEnemigo[cont - 1]);
+                ((Enemigo)enemigos[i]).SetX(spawnEnemigo[cont - 2]);
+                ((Enemigo)enemigos[i]).SetY(spawnEnemigo[cont - 1]);
 
-                cont++;
+                cont += 2;
             }
 
             ((Protagonista)protagonista).ResetearInventario();
@@ -132,11 +132,13 @@ namespace ProyectoJuego
             {
                 pausa = false;
                 pausaTemp = 0;
+                MediaPlayer.Resume();
             }
             else if (key.IsKeyDown(Keys.P) && pausaTemp > 7)
             {
                 pausa = true;
                 pausaTemp = 0;
+                MediaPlayer.Pause();
             }
             else
             {
@@ -177,17 +179,22 @@ namespace ProyectoJuego
                        
                     protagonista.Update();
 
+                    int cont = 2;
+
                     foreach (Sprite enemigo in enemigos)
                     {
                         if (enemigo.DetectarColision(protagonista))
                         {
                             protagonista.SetX(spawnProtagonista[0]);
                             protagonista.SetY(spawnProtagonista[1]);
-                            enemigo.SetX(spawnEnemigo[0]);
-                            enemigo.SetY(spawnEnemigo[1]);
+
+                            enemigo.SetX(spawnEnemigo[cont-2]);
+                            enemigo.SetY(spawnEnemigo[cont-1]);
 
                             ((Protagonista)protagonista).QuitarVida();
                         }
+
+                        cont += 2;
                     }
 
                     foreach (Muro muro in muros)
@@ -219,7 +226,14 @@ namespace ProyectoJuego
                     {
                         if (((Enemigo)enemigo).GetVida() <= 0)
                         {
+                            PantallaManager.anteriorPantalla = PantallaManager.actualPantalla;
                             PantallaManager.actualPantalla++;
+
+                            if (PantallaManager.actualPantalla == 7)
+                            {
+                                PantallaManager.actualPantalla = 11;
+                            }
+
                             Resetear();
                         }
                     }
@@ -227,9 +241,9 @@ namespace ProyectoJuego
                 else
                 {
                     Resetear();
-                    MediaPlayer.Stop();
                     Protagonista.puntuacion = 0;
-                    PantallaManager.actualPantalla = 8;
+                    PantallaManager.anteriorPantalla = PantallaManager.actualPantalla;
+                    PantallaManager.actualPantalla = 9;
                 }
             }
         }

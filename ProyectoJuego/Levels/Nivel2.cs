@@ -18,11 +18,21 @@ namespace ProyectoJuego
             spawnProtagonista[0] = 70;
             spawnProtagonista[1] = 200;
 
-            spawnEnemigo.Add(100);
             spawnEnemigo.Add(50);
+            spawnEnemigo.Add(50);
+            spawnEnemigo.Add(800);
+            spawnEnemigo.Add(800);
+            spawnEnemigo.Add(180);
+            spawnEnemigo.Add(160);
+            spawnEnemigo.Add(800);
+            spawnEnemigo.Add(640);
 
             protagonista = new Protagonista(spawnProtagonista[0], spawnProtagonista[1], 60, 80);
-            enemigos.Add(new Enemigo(spawnEnemigo[0], spawnEnemigo[1], 60, 80));
+
+            enemigos.Add(new Enemigo(spawnEnemigo[0], spawnEnemigo[1], 80, 100));
+            enemigos.Add(new Enemigo(spawnEnemigo[2], spawnEnemigo[3], 80, 100));
+            enemigos.Add(new Enemigo(spawnEnemigo[4], spawnEnemigo[5], 60, 80));
+            enemigos.Add(new Enemigo(spawnEnemigo[6], spawnEnemigo[7], 60, 80));
         }
 
         public override void Initialize(GraphicsDevice graphicsDevice)
@@ -59,10 +69,13 @@ namespace ProyectoJuego
             muros.Add(new Muro(630, 270, 20, 350));
 
             //Objetos
+            objetos.Add(new Curacion(750, 480, 40, 40));
             objetos.Add(new Curacion(1100, 70, 40, 40));
-            objetos.Add(new Puerta(545, 390, 80, 100, 1));
-            objetos.Add(new Llave(950, 190, 50, 50));
-            objetos.Add(new Moneda(550, 50, 60, 60));
+            objetos.Add(new Puerta(545, 390, 80, 100, 2));
+            objetos.Add(new Llave(750, 410, 50, 50));
+            objetos.Add(new Llave(400, 410, 50, 50));
+            objetos.Add(new Moneda(400, 310, 60, 60));
+            objetos.Add(new Moneda(400, 520, 60, 60));
             objetos.Add(new Moneda(850, 90, 60, 60));
             objetos.Add(new Moneda(230, 600, 60, 60));
             objetos.Add(new Moneda(1080, 830, 60, 60));

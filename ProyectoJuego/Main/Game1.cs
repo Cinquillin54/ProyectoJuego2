@@ -68,6 +68,8 @@ namespace ProyectoJuego
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>("font");
 
+            MediaPlayer.Volume = 0.25F;
+
             pantallaManager.LoadContent(GraphicsDevice,media);
             // TODO: use this.Content to load your game content here
         }

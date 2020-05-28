@@ -112,7 +112,7 @@ namespace ProyectoJuego
             {
                 stream = TitleContainer.OpenStream("Content/pistola.png");
                 texturas.Add("pistola", Texture2D.FromStream(graphicsDevice, stream));
-                stream = TitleContainer.OpenStream("Content/disparo.png");
+                stream = TitleContainer.OpenStream("Content/bala.png");
                 texturas.Add("bala", Texture2D.FromStream(graphicsDevice, stream));
 
                 texturaActual = texturas["pistola"];

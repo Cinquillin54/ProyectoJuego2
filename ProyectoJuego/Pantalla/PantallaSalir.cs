@@ -20,6 +20,10 @@ namespace ProyectoJuego
         const string CURSOR_PATH = "Content/cursor.png";
         Texture2D cursor;
 
+        public PantallaSalir()
+        {
+        }
+
         public override void Initialize(GraphicsDevice graphicsDevice)
         {
             salir = false;
@@ -82,7 +86,7 @@ namespace ProyectoJuego
                 if (seleccionActual == 1)
                 {
                     PantallaInicio.teclaTimer = 0;
-                    PantallaManager.actualPantalla = 9;
+                    PantallaManager.actualPantalla = 10;
                 }
                 else
                 {

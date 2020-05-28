@@ -56,7 +56,7 @@ namespace ProyectoJuego
 
             if (key.IsKeyDown(Keys.Escape) || key.IsKeyDown(Keys.Space))
             {
-                PantallaManager.actualPantalla = 9;
+                PantallaManager.actualPantalla = 10;
             }
         }
     }

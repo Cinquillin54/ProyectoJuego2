@@ -23,7 +23,7 @@ namespace ProyectoJuego
             tempDireccion = 10;
             r = new Random();
             vida = 100;
-            velocidad = 2;
+            velocidad = 3;
         }
 
         public override void LoadContent(GraphicsDevice graphicsDevice)
@@ -92,6 +92,10 @@ namespace ProyectoJuego
             }
         }
 
+        public void SetVelocidad(int velocidad)
+        {
+            this.velocidad = velocidad;
+        }
         public int GetTempDireccion()
         {
             return tempDireccion;
@@ -205,7 +209,7 @@ namespace ProyectoJuego
 
         public void Impacto()
         {
-            if (vida <= 35)
+            if (vida <= 50)
             {
                 velocidad++;
             }
@@ -236,11 +240,6 @@ namespace ProyectoJuego
             {
                 return false;
             }
-        }
-
-        public void SetVelocidad(int velocidad)
-        {
-            this.velocidad = velocidad;
         }
 
         public void Perseguir(Sprite protagonista,List<Muro> muros)

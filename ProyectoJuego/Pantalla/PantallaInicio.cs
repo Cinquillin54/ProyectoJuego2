@@ -19,18 +19,16 @@ namespace ProyectoJuego
         const string CURSOR_PATH = "Content/cursor.png";
         Texture2D cursor;
 
-        public PantallaInicio(Texture2D background) : base(background)
-        {
-            teclaTimer = 0;
-            seleccionActual = 0;
-        }
         public PantallaInicio() : base()
         {
         }
 
         public override void Initialize(GraphicsDevice graphicsDevice)
         {
+            teclaTimer = 0;
+            seleccionActual = 0;
         }
+
         public override void LoadContent(GraphicsDevice graphicsDevice, List<Song> media)
         {
             music = media[0];
@@ -97,17 +95,20 @@ namespace ProyectoJuego
                 if (seleccionActual == 2)
                 {
                     PantallaSalir.anteriorTecla = 0;
-                    PantallaManager.actualPantalla = 7;
+                    PantallaManager.anteriorPantalla = 10;
+                    PantallaManager.actualPantalla = 8;
                 }
                 else if (seleccionActual == 1)
                 {
                     PantallaPuntuaciones.anteriorTecla = 0;
-                    PantallaManager.actualPantalla = 6;
+                    PantallaManager.anteriorPantalla = 10;
+                    PantallaManager.actualPantalla = 7;
                 }
                 else if (seleccionActual == 0)
                 {
                     PantallaPuntuaciones.anteriorTecla = 0;
-                    PantallaManager.actualPantalla = 0;
+                    PantallaManager.anteriorPantalla = 10;
+                    PantallaManager.actualPantalla = 6;
                 }
             }
             else

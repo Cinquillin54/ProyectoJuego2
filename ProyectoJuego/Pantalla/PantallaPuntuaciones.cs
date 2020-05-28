@@ -18,20 +18,17 @@ namespace ProyectoJuego
 
         public PantallaPuntuaciones()
         {
+        }
+
+        public override void Initialize(GraphicsDevice graphicsDevice)
+        {
             puntuaciones = new Dictionary<string, int>();
             anteriorTecla = 0;
             seleccionActual = 0;
         }
 
-        public override void Initialize(GraphicsDevice graphicsDevice)
-        {
-        }
-
         public override void LoadContent(GraphicsDevice graphicsDevice, List<Song> media)
         {
-            music = media[0];
-            MediaPlayer.IsRepeating = true;
-
             if (File.Exists("Puntuaciones.txt"))
             {
                 StreamReader reader = File.OpenText("Puntuaciones.txt");
@@ -82,7 +79,7 @@ namespace ProyectoJuego
 
             if (key.IsKeyDown(Keys.Enter) && anteriorTecla > 6)
             {
-                PantallaManager.actualPantalla = 9;
+                PantallaManager.actualPantalla = 10;
                 PantallaInicio.teclaTimer = 0;
                 anteriorTecla = 0;
             }
