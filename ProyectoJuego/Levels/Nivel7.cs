@@ -13,17 +13,26 @@ namespace ProyectoJuego
     class Nivel7 : Nivel
     {
         const string BACKGROUND_PATH = "Content/level1Background.png";
+        public static int enemigosCont;
         public Nivel7() : base()
         {
+            enemigosCont = 2;
+
             spawnProtagonista[0] = 500;
             spawnProtagonista[1] = 800;
 
             spawnEnemigo.Add(100);
             spawnEnemigo.Add(50);
 
+            spawnEnemigo.Add(400);
+            spawnEnemigo.Add(50);
+
             protagonista = new Protagonista(spawnProtagonista[0], spawnProtagonista[1], 60, 80);
             enemigos.Add(new Enemigo(spawnEnemigo[0], spawnEnemigo[1], 150, 180));
+            enemigos.Add(new Enemigo(spawnEnemigo[2], spawnEnemigo[3], 150, 180));
+
             ((Enemigo)enemigos[0]).SetVelocidad(2);
+            ((Enemigo)enemigos[1]).SetVelocidad(2);
         }
 
         public override void Initialize(GraphicsDevice graphicsDevice)
@@ -39,7 +48,10 @@ namespace ProyectoJuego
             muros.Add(new Muro(9, 950, 1180, 20));
             muros.Add(new Muro(0, 930, 1180, 20));
             //Muros particulares
-
+            muros.Add(new Muro(500,500,200,20));
+            muros.Add(new Muro(500, 500, 20, 200));
+            muros.Add(new Muro(500, 500, 200, 20));
+            muros.Add(new Muro(500, 500, 200, 20));
 
             //Objetos
             objetos.Add(new Curacion(1100, 70, 40, 40));
@@ -82,6 +94,20 @@ namespace ProyectoJuego
             if (((Protagonista)protagonista).TienePistola())
             {
                 spriteBatch.DrawString(font, "Espacio - Disparar", new Vector2(330, 800), Color.White);
+            }
+        }
+
+        public override void Update()
+        {
+            base.Update();
+
+            if (enemigosCont == 0)
+            {
+                Resetear();
+                
+                enemigosCont = 2;
+                PantallaManager.anteriorPantalla = 6;
+                PantallaManager.actualPantalla = 11;
             }
         }
     }

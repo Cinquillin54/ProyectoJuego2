@@ -8,18 +8,21 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.IO;
 using System.Diagnostics.Contracts;
+using System.Security.Policy;
 
 namespace ProyectoJuego
 {
     class Enemigo : Sprite
     {
         Random r;
+        bool oculto;
         int vida;
         int direccionActual;
         int tempDireccion;
 
         public Enemigo(int x, int y, int ancho, int alto) : base(x, y, ancho, alto)
         {
+            oculto = false;
             tempDireccion = 10;
             r = new Random();
             vida = 100;
@@ -209,12 +212,36 @@ namespace ProyectoJuego
 
         public void Impacto()
         {
-            if (vida <= 50)
+            if (!oculto)
             {
-                velocidad++;
-            }
+                if (PantallaManager.actualPantalla == 6)
+                {
+                    if (vida <= 50)
+                    {
+                        velocidad++;
+                    }
 
-            vida -= 15;
+                    if (vida <= 0)
+                    {
+                        Nivel7.enemigosCont--;
+                        oculto = true;
+                    }
+                }
+                else
+                {
+                    if (vida <= 50)
+                    {
+                        velocidad++;
+                    }
+
+                    if (vida <= 0)
+                    {
+                        PantallaManager.actualPantalla++;
+                    }
+                }
+
+                vida -= 15;
+            }
         }
 
         public void SetVida(int vida)
@@ -225,6 +252,16 @@ namespace ProyectoJuego
         public int GetVida()
         {
             return vida;
+        }
+
+        public bool GetOculto()
+        {
+            return oculto;
+        }
+
+        public void SetOculto(bool oculto)
+        {
+            this.oculto = oculto;
         }
 
         public override bool DetectarColision(Sprite sprite2)

@@ -49,6 +49,18 @@ namespace ProyectoJuego
             objetos.Add(new Moneda(1080, 830, 60, 60));
             objetos.Add(new Pistola(500,600,70,70));
         }
+
+        public override void Update()
+        {
+            base.Update();
+
+            if (((Enemigo)enemigos[0]).GetVida() <= 0)
+            {
+                Resetear();
+                PantallaManager.actualPantalla++;
+            }
+        }
+
         public override void LoadContent(GraphicsDevice graphicsDevice, List<Song> media)
         {
             base.LoadContent(graphicsDevice, media);

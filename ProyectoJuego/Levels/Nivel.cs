@@ -77,6 +77,8 @@ namespace ProyectoJuego
                 ((Enemigo)enemigos[i]).SetX(spawnEnemigo[cont - 2]);
                 ((Enemigo)enemigos[i]).SetY(spawnEnemigo[cont - 1]);
 
+                ((Enemigo)enemigos[i]).SetOculto(false);
+
                 cont += 2;
             }
 
@@ -146,7 +148,7 @@ namespace ProyectoJuego
             }
 
             if (!pausa)
-            {
+            { 
                 if (!ComprobarDerrota())
                 {
                     if (PantallaManager.actualPantalla == 3)
@@ -183,7 +185,7 @@ namespace ProyectoJuego
 
                     foreach (Sprite enemigo in enemigos)
                     {
-                        if (enemigo.DetectarColision(protagonista))
+                        if (enemigo.DetectarColision(protagonista) && !((Enemigo)enemigo).GetOculto())
                         {
                             protagonista.SetX(spawnProtagonista[0]);
                             protagonista.SetY(spawnProtagonista[1]);
@@ -219,22 +221,6 @@ namespace ProyectoJuego
                                     Resetear();
                                 }
                             }
-                        }
-                    }
-
-                    foreach (Sprite enemigo in enemigos)
-                    {
-                        if (((Enemigo)enemigo).GetVida() <= 0)
-                        {
-                            PantallaManager.anteriorPantalla = PantallaManager.actualPantalla;
-                            PantallaManager.actualPantalla++;
-
-                            if (PantallaManager.actualPantalla == 7)
-                            {
-                                PantallaManager.actualPantalla = 11;
-                            }
-
-                            Resetear();
                         }
                     }
                 }
@@ -277,7 +263,10 @@ namespace ProyectoJuego
 
             foreach (Sprite enemigo in enemigos)
             {
-                enemigo.Draw(spriteBatch);
+                if (!((Enemigo)enemigo).GetOculto())
+                {
+                    enemigo.Draw(spriteBatch);
+                }
             }
 
             spriteBatch.DrawString(font, "Vida:", new Vector2(800, 10), Color.White);

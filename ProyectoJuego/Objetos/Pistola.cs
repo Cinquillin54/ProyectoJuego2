@@ -30,7 +30,7 @@ namespace ProyectoJuego
             }
             else if (retardoBalas < 0)
             {
-                retardoBalas = 20;
+                retardoBalas = 10;
                 balas.Add(new Rectangle(protagonista.GetHitbox().X, protagonista.GetHitbox().Y, 20, 30));
                 posicionesBalas.Add(protagonista.GetPosicionActual());
             }

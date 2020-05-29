@@ -108,7 +108,7 @@ namespace ProyectoJuego
                 {
                     PantallaPuntuaciones.anteriorTecla = 0;
                     PantallaManager.anteriorPantalla = 10;
-                    PantallaManager.actualPantalla = 6;
+                    PantallaManager.actualPantalla = 0;
                 }
             }
             else
