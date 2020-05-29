@@ -151,7 +151,7 @@ namespace ProyectoJuego
             { 
                 if (!ComprobarDerrota())
                 {
-                    if (PantallaManager.actualPantalla == 3)
+                    if (PantallaManager.actualPantalla == 3 || PantallaManager.actualPantalla == 6)
                     {
                         foreach (Sprite enemigo in enemigos)
                         {

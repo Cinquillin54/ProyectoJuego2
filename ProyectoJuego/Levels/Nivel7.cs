@@ -18,7 +18,7 @@ namespace ProyectoJuego
         {
             enemigosCont = 2;
 
-            spawnProtagonista[0] = 500;
+            spawnProtagonista[0] = 400;
             spawnProtagonista[1] = 800;
 
             spawnEnemigo.Add(100);
@@ -31,8 +31,8 @@ namespace ProyectoJuego
             enemigos.Add(new Enemigo(spawnEnemigo[0], spawnEnemigo[1], 150, 180));
             enemigos.Add(new Enemigo(spawnEnemigo[2], spawnEnemigo[3], 150, 180));
 
-            ((Enemigo)enemigos[0]).SetVelocidad(2);
-            ((Enemigo)enemigos[1]).SetVelocidad(2);
+            ((Enemigo)enemigos[0]).SetVelocidad(1);
+            ((Enemigo)enemigos[1]).SetVelocidad(1);
         }
 
         public override void Initialize(GraphicsDevice graphicsDevice)
@@ -48,10 +48,14 @@ namespace ProyectoJuego
             muros.Add(new Muro(9, 950, 1180, 20));
             muros.Add(new Muro(0, 930, 1180, 20));
             //Muros particulares
-            muros.Add(new Muro(500,500,200,20));
-            muros.Add(new Muro(500, 500, 20, 200));
-            muros.Add(new Muro(500, 500, 200, 20));
-            muros.Add(new Muro(500, 500, 200, 20));
+            muros.Add(new Muro(320, 500, 200, 20));
+            muros.Add(new Muro(650, 475, 20, 200));
+            muros.Add(new Muro(200, 275, 20, 300));
+            muros.Add(new Muro(900, 200, 200, 20));
+            muros.Add(new Muro(525, 675, 20, 200));
+            muros.Add(new Muro(900, 200, 200, 20));
+            muros.Add(new Muro(900, 200, 200, 20));
+
 
             //Objetos
             objetos.Add(new Curacion(1100, 70, 40, 40));
