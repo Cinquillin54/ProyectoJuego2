@@ -18,7 +18,7 @@ namespace ProyectoJuego
             spawnProtagonista[0] = 700;
             spawnProtagonista[1] = 480;
 
-            spawnEnemigo.Add(1100);
+            spawnEnemigo.Add(1000);
             spawnEnemigo.Add(80);
 
             spawnEnemigo.Add(675);
