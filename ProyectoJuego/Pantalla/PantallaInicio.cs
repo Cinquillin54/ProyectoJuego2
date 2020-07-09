@@ -66,49 +66,57 @@ namespace ProyectoJuego
 
         public override void Update()
         {
-            KeyboardState key = Keyboard.GetState();
+            KeyboardState keys = Keyboard.GetState();
 
-            if (key.IsKeyDown(Keys.W) && teclaTimer > 6)
+            if (teclaTimer > 6)
             {
-                seleccionActual--;
+                foreach (Keys key in keys.GetPressedKeys())
+                {
+                    switch (key)
+                    {
+                        case Keys.W:
+                            seleccionActual--;
+                            
+                            if (seleccionActual < 0)
+                            {
+                                seleccionActual = 0;
+                            }
 
-                if (seleccionActual < 0)
-                {
-                    seleccionActual = 0;
-                }
+                            teclaTimer = 0;
+                            break;
+                        case Keys.S:
+                            seleccionActual++;
 
-                teclaTimer = 0;
-            }
-            else if (key.IsKeyDown(Keys.S) && teclaTimer > 6)
-            {
-                seleccionActual++;
+                            if (seleccionActual > 2)
+                            {
+                                seleccionActual = 2;
+                            }
 
-                if (seleccionActual > 2)
-                {
-                    seleccionActual = 2;
-                }
+                            teclaTimer = 0;
+                            break;
+                        case Keys.Enter:
 
-                teclaTimer = 0;
-            }
-            else if (key.IsKeyDown(Keys.Enter) && teclaTimer > 6)
-            {
-                if (seleccionActual == 2)
-                {
-                    PantallaSalir.anteriorTecla = 0;
-                    PantallaManager.anteriorPantalla = 10;
-                    PantallaManager.actualPantalla = 8;
-                }
-                else if (seleccionActual == 1)
-                {
-                    PantallaPuntuaciones.anteriorTecla = 0;
-                    PantallaManager.anteriorPantalla = 10;
-                    PantallaManager.actualPantalla = 7;
-                }
-                else if (seleccionActual == 0)
-                {
-                    PantallaPuntuaciones.anteriorTecla = 0;
-                    PantallaManager.anteriorPantalla = 10;
-                    PantallaManager.actualPantalla = 0;
+                            switch (seleccionActual)
+                            {
+                                case 2:
+                                    PantallaSalir.anteriorTecla = 0;
+                                    PantallaManager.anteriorPantalla = 10;
+                                    PantallaManager.actualPantalla = 8;
+                                    break;
+                                case 1:
+                                    PantallaPuntuaciones.anteriorTecla = 0;
+                                    PantallaManager.anteriorPantalla = 10;
+                                    PantallaManager.actualPantalla = 7;
+                                    break;
+                                case 0:
+                                    PantallaPuntuaciones.anteriorTecla = 0;
+                                    PantallaManager.anteriorPantalla = 10;
+                                    PantallaManager.actualPantalla = 0;
+                                    break;
+                            }
+
+                            break;
+                    }
                 }
             }
             else
@@ -127,17 +135,17 @@ namespace ProyectoJuego
 
             Vector2 vector = new Vector2(0,0);
 
-            if (seleccionActual == 0)
+            switch (seleccionActual)
             {
-                vector = new Vector2(650, 70);
-            }
-            else if (seleccionActual == 1)
-            {
-                vector = new Vector2(800, 370);
-            }
-            else if (seleccionActual == 2)
-            {
-                vector = new Vector2(630, 670);
+                case 0:
+                    vector = new Vector2(650, 70);
+                    break;
+                case 1:
+                    vector = new Vector2(800, 370);
+                    break;
+                case 2:
+                    vector = new Vector2(630, 670);
+                    break;
             }
 
             spriteBatch.Draw(cursor, vector, Color.White);

@@ -49,21 +49,20 @@ namespace ProyectoJuego
         {
             for (int i=0;i<balas.Count();i++)
             {
-                if (posicionesBalas[i] == 0)
+                switch (posicionesBalas[i])
                 {
-                    balas[i] = new Rectangle(balas[i].X, balas[i].Y - 5, 20, 30);
-                }
-                else if (posicionesBalas[i] == 1)
-                {
-                    balas[i] = new Rectangle(balas[i].X, balas[i].Y + 5, 20, 30);
-                }
-                else if (posicionesBalas[i] == 2)
-                {
-                    balas[i] = new Rectangle(balas[i].X + 5, balas[i].Y, 20, 30);
-                }
-                else if (posicionesBalas[i] == 3)
-                {
-                    balas[i] = new Rectangle(balas[i].X - 5, balas[i].Y, 20, 30);
+                    case 0:
+                        balas[i] = new Rectangle(balas[i].X, balas[i].Y - 5, 20, 30);
+                        break;
+                    case 1:
+                        balas[i] = new Rectangle(balas[i].X, balas[i].Y + 5, 20, 30);
+                        break;
+                    case 2:
+                        balas[i] = new Rectangle(balas[i].X + 5, balas[i].Y, 20, 30);
+                        break;
+                    case 3:
+                        balas[i] = new Rectangle(balas[i].X - 5, balas[i].Y, 20, 30);
+                        break;
                 }
 
                 spriteBatch.Draw(texturas["bala"], balas[i], Color.White);

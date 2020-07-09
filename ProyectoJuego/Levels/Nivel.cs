@@ -256,7 +256,10 @@ namespace ProyectoJuego
 
             foreach (Sprite enemigo in enemigos)
             {
-                ((Protagonista)protagonista).DibujarPistola(spriteBatch, muros, enemigo);
+                if (!((Enemigo)enemigo).GetOculto())
+                {
+                    ((Protagonista)protagonista).DibujarPistola(spriteBatch, muros, enemigo);
+                }
             }
 
             protagonista.Draw(spriteBatch);
