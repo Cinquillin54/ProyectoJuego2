@@ -18,6 +18,7 @@ namespace ProyectoJuego
         public override void LoadContent(GraphicsDevice graphicsDevice)
         {
             Stream stream;
+
             try
             {
                 stream = TitleContainer.OpenStream("Content/Llave.png");
@@ -41,7 +42,7 @@ namespace ProyectoJuego
 
         public override void Funcion(Sprite protagonista)
         {
-            ((Protagonista)protagonista).inventario.Add(this);
+            ((Protagonista)protagonista).GetInventario().Add(this);
         }
     }
 }

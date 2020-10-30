@@ -13,7 +13,7 @@ namespace ProyectoJuego
 {
     public abstract class Pantalla
     {
-        public Song music;
+        protected Song music;
         protected Texture2D background;
 
         public Pantalla(Texture2D background)

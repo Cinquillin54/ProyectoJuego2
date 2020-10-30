@@ -13,13 +13,13 @@ namespace ProyectoJuego
 {
     class Protagonista : Sprite
     {
-        public List<Objeto> inventario;
-        public static int puntuacion;
+        private List<Objeto> inventario;
         Texture2D vidaActual;
+        public static int puntuacion;
+        private int vida;
         const string TEXTURA_VIDA_LLENA = "Content/vidaPersonaje_llena.png";
         const string TEXTURA_VIDA_MEDIA = "Content/vidaPersonaje_media.png";
         const string TEXTURA_VIDA_BAJA = "Content/vidaPersonaje_baja.png";
-        int vida;
 
         public Protagonista(int x,int y,int ancho,int alto) : base(x,y,ancho,alto)
         {
@@ -337,6 +337,11 @@ namespace ProyectoJuego
                     ((Enemigo)enemigo).Impacto();
                 }
             }
+        }
+
+        public List<Objeto> GetInventario()
+        {
+            return inventario;
         }
 
         public void AumentarPuntuacion()

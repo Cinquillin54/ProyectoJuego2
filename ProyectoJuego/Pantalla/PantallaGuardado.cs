@@ -13,7 +13,7 @@ namespace ProyectoJuego
 {
     class PantallaGuardado : Pantalla
     {
-        string nombre;
+        private string nombre;
         public static int anteriorTecla;
         const string TEXTURAS_PATH = "Content/pantallaInicio.jpg";
 

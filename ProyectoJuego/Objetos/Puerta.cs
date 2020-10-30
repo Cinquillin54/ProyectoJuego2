@@ -11,7 +11,7 @@ namespace ProyectoJuego
 {
     class Puerta : Objeto
     {
-        public int llaves;
+        private int llaves;
 
         public Puerta(int x,int y,int ancho,int alto,int llaves) : base(x,y,ancho,alto)
         {
@@ -80,6 +80,11 @@ namespace ProyectoJuego
                 writer.Close();
             }
         }    
+
+        public int GetLlaves()
+        {
+            return llaves;
+        }
 
         public override void Update()
         {

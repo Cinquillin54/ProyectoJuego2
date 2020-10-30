@@ -14,11 +14,11 @@ namespace ProyectoJuego
 {
     class Enemigo : Sprite
     {
-        Random r;
-        bool oculto;
-        int vida;
-        int direccionActual;
-        int tempDireccion;
+        private Random r;
+        private bool oculto;
+        private int vida;
+        private int direccionActual;
+        private int tempDireccion;
 
         public Enemigo(int x, int y, int ancho, int alto) : base(x, y, ancho, alto)
         {

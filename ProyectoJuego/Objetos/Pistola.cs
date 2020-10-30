@@ -26,7 +26,7 @@ namespace ProyectoJuego
         {
             if (!((Protagonista)protagonista).TienePistola())
             {
-                ((Protagonista)protagonista).inventario.Add(this);
+                ((Protagonista)protagonista).GetInventario().Add(this);
             }
             else if (retardoBalas < 0)
             {
